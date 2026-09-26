@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Field / NudgeKavach Demo Store</title>
+    <link rel="stylesheet" href="store.css" />
+    <script src="store.js" defer></script>
+  </head>
+  <body>
+    <div class="demo-bar">
+      <span>NUDGEKAVACH LAB / CATALYST HACK 2026</span
+      ><span>Controlled demo · No real purchases</span>
+    </div>
+    <header>
+      <a class="brand" href="/">field<span>®</span></a>
+      <nav>
+        <a href="?mode=tricky">Pattern store</a><a href="?mode=clean">Clean comparison</a
+        ><a href="guide.html">Demo guide ↗</a>
+      </nav>
+      <span class="bag">BAG / 01</span>
+    </header>
+    <main>
+      <div class="breadcrumb">EVERYDAY OBJECTS / AUDIO / FIELD ONE</div>
+      <section class="product">
+        <div class="visual">
+          <span class="edition">DESIGNED FOR YOUR EVERYDAY</span>
+          <div class="headphones" aria-label="Illustration of green over-ear headphones" role="img">
+            <div class="arch"></div>
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+          </div>
+          <div class="visual-footer">
+            <span>01 — MOSS GREEN</span><span>FORM MEETS FOCUS.</span>
+          </div>
+        </div>
+        <div class="description">
+          <div class="eyebrow">LESS NOISE. MORE YOU.</div>
+          <h1>A little quiet.<br />A lot of possibility.</h1>
+          <p class="intro">
+            Meet Field One. Wireless comfort, thoughtful design, and a soundtrack that follows you.
+          </p>
+          <div class="price">₹2,499 <span>Field One / Moss</span></div>
+          <div class="urgency" id="offer">
+            <span>Launch offer ends in </span><strong id="countdown">00:12</strong>
+          </div>
+          <ul class="specs">
+            <li>40-hour battery</li>
+            <li>Soft-touch cushions</li>
+            <li>Two-year warranty</li>
+          </ul>
+          <label class="addon"
+            ><input type="checkbox" id="protection" checked />
+            <span>Optional protection plan <b>₹399</b></span></label
+          >
+          <button class="primary" id="checkout">Continue to checkout <span>↗</span></button>
+          <p class="fine">Demo only. No payment details are collected.</p>
+        </div>
+      </section>
+      <section class="lower">
+        <div>
+          <div class="eyebrow">THE CHECKOUT</div>
+          <h2>Know what you’re paying.</h2>
+          <p class="muted">Watch this summary as you continue to checkout.</p>
+          <div class="summary">
+            <div class="row"><span>Field One</span><span>₹2,499</span></div>
+            <div class="row" id="protection-row"><span>Protection plan</span><span>₹399</span></div>
+            <p id="fee" hidden>Platform fee: ₹149</p>
+            <div class="row total"><span>Total</span><strong id="total">₹2,898</strong></div>
+            <p id="checkout-status" role="status">Your bag is ready.</p>
+          </div>
+        </div>
+        <aside class="newsletter">
+          <div class="eyebrow">A LITTLE SOMETHING EXTRA</div>
+          <h2>Make room for 10% off.</h2>
+          <p>Join the Field mailing list for launch updates.</p>
+          <button class="primary" id="subscribe">Yes, send me offers</button
+          ><button class="shame" id="decline">No thanks, I love paying full price</button>
+          <p id="newsletter-status" role="status"></p>
+        </aside>
+      </section>
+      <section class="lab-note">
+        <b id="mode-label">PATTERN STORE</b>
+        <p id="mode-description">
+          Five deliberately questionable UI patterns. Open NudgeKavach, continue to checkout, and
+          watch the countdown reset.
+        </p>
+      </section>
+    </main>
+    <section class="cookies" aria-label="Cookie choices">
+      <div>
+        <b>Your browsing, your choice.</b>
+        <p>Allow optional cookies for personalized recommendations?</p>
+      </div>
+      <div class="cookie-actions">
+        <button id="accept">Accept all</button><button id="reject">Reject optional</button>
+      </div>
+    </section>
+    <footer>FIELD IS A FICTIONAL STORE · NUDGEKAVACH DEMO · BUILT TO MAKE CHOICE VISIBLE</footer>
+  </body>
+</html>

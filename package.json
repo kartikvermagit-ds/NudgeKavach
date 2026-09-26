@@ -1,0 +1,26 @@
+{
+  "name": "nudgekavach",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence-first, local dark-pattern auditor and controlled demo",
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kartikvermagit-ds/NudgeKavach.git"
+  },
+  "scripts": {
+    "start": "node backend/server.cjs",
+    "dev": "node --watch backend/server.cjs",
+    "test": "node --test tests/unit/*.test.cjs",
+    "test:browser": "node tests/integration/browser.cjs",
+    "check": "node scripts/check.cjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "prettier": "3.9.9"
+  }
+}

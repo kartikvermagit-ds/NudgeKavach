@@ -1,0 +1,109 @@
+{
+  "product": "NudgeKavach / NudgeProof",
+  "version": "0.1.0",
+  "page": "http://127.0.0.1:4174/demo/",
+  "started": "2026-09-26T12:40:18.311Z",
+  "monitoring": true,
+  "findings": [
+    {
+      "key": "prechecked:1",
+      "type": "prechecked",
+      "title": "Pre-selected optional choice",
+      "evidence": [
+        "First observed checked: “Optional protection plan ₹399”. No user interaction with this control observed since monitoring began."
+      ],
+      "interpretation": "An optional choice was already selected at first observation. Earlier user choices or saved preferences cannot be ruled out.",
+      "confidence": "Observed state",
+      "firstSeen": "2026-09-26T12:40:18.379Z",
+      "elementPresent": true
+    },
+    {
+      "key": "shaming:2",
+      "type": "shaming",
+      "title": "Possible confirm-shaming",
+      "evidence": [
+        "Choice label: “No thanks, I love paying full price”. Matched a local guilt/negative-self-description phrase rule."
+      ],
+      "interpretation": "Declining is framed as a negative personal choice. Context can change the meaning.",
+      "confidence": "Heuristic",
+      "firstSeen": "2026-09-26T12:40:18.379Z",
+      "elementPresent": true
+    },
+    {
+      "key": "prominence:3",
+      "type": "prominence",
+      "title": "Unequal choice prominence",
+      "evidence": [
+        "“Accept all” vs “Reject optional”: area 8.01×; font 1.70×. Threshold: area ≥2.5× or font ≥1.5×."
+      ],
+      "interpretation": "Acceptance occupies more visual space than rejection. This geometric signal does not assess intent or accessibility.",
+      "confidence": "Heuristic",
+      "firstSeen": "2026-09-26T12:40:18.380Z",
+      "elementPresent": true
+    },
+    {
+      "key": "fees:4",
+      "type": "fees",
+      "title": "Late-visible fee",
+      "evidence": [
+        "Not visible in the initial fee baseline; now visible: “Platform fee: ₹149”. First observed 0.3s after monitoring began."
+      ],
+      "interpretation": "A fee appeared after the baseline. It may be a late disclosure or a legitimate recalculation; verify the checkout total.",
+      "confidence": "Observed change",
+      "firstSeen": "2026-09-26T12:40:18.649Z",
+      "elementPresent": true
+    },
+    {
+      "key": "urgency:5",
+      "type": "urgency",
+      "title": "Suspicious countdown reset",
+      "evidence": ["Observed 0s → 12s after 12 descending samples; reset #1. Initial value: 12s."],
+      "interpretation": "The same countdown increased after counting down. It may create artificial urgency; a legitimate extension or new offer is also possible.",
+      "confidence": "Observed behavior",
+      "firstSeen": "2026-09-26T12:40:31.389Z",
+      "elementPresent": true
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-09-26T12:40:18.327Z",
+      "elapsed": "0.0",
+      "message": "Local monitoring started; first visible state is the baseline."
+    },
+    {
+      "at": "2026-09-26T12:40:18.379Z",
+      "elapsed": "0.1",
+      "message": "Pre-selected optional choice"
+    },
+    {
+      "at": "2026-09-26T12:40:18.379Z",
+      "elapsed": "0.1",
+      "message": "Possible confirm-shaming"
+    },
+    {
+      "at": "2026-09-26T12:40:18.380Z",
+      "elapsed": "0.1",
+      "message": "Unequal choice prominence"
+    },
+    {
+      "at": "2026-09-26T12:40:18.380Z",
+      "elapsed": "0.1",
+      "message": "Timer baseline: 00:12"
+    },
+    {
+      "at": "2026-09-26T12:40:18.649Z",
+      "elapsed": "0.3",
+      "message": "Late-visible fee"
+    },
+    {
+      "at": "2026-09-26T12:40:31.389Z",
+      "elapsed": "13.1",
+      "message": "Suspicious countdown reset"
+    },
+    {
+      "at": "2026-09-26T12:40:31.389Z",
+      "elapsed": "13.1",
+      "message": "Countdown jumped 0s → 12s"
+    }
+  ]
+}
