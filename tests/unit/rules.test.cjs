@@ -9,12 +9,15 @@ test('optional purchases and consent labels; avoid generic required controls', (
 test('shaming phrases distinguish neutral refusal', () => {
   assert.ok(R.shaming('No thanks, I love paying full price'));
   assert.ok(R.shaming("I don't care about saving"));
+  assert.ok(R.shaming("No thanks, I'll pass on discounts"));
+  assert.ok(R.shaming("No, I'd rather pay full price"));
   assert.equal(R.shaming('No thanks'), false);
   assert.equal(R.shaming('I want to save money'), false);
 });
 test('countdown parsing and increases; ordinary ticks are not fake urgency', () => {
   assert.equal(R.seconds('Offer 01:02:03'), 3723);
   assert.equal(R.seconds('00:12'), 12);
+  assert.equal(R.seconds('12m 30s'), 750);
   assert.equal(R.seconds('00:99'), null);
   assert.equal(R.seconds('No timer'), null);
   assert.ok(R.reset(0, 12));
@@ -23,10 +26,16 @@ test('countdown parsing and increases; ordinary ticks are not fake urgency', () 
 });
 test('fee rules require fee terminology and monetary evidence', () => {
   assert.ok(R.fee('Platform fee: ₹149'));
+  assert.ok(R.fee('Packaging charge: Rs. 40'));
+  assert.ok(R.fee('Convenience fee: $4.99'));
+  assert.ok(R.fee('Booking fee: £2.50'));
   assert.equal(R.fee('Free shipping'), false);
   assert.equal(R.fee('Service fee may apply'), false);
 });
 test('prominence uses explicit thresholds and equal controls remain clean', () => {
   assert.ok(R.prominence({ area: 5000, font: 16 }, { area: 1000, font: 12 }).flag);
   assert.equal(R.prominence({ area: 2500, font: 14 }, { area: 2500, font: 14 }).flag, false);
+  assert.ok(
+    R.prominence({ area: 2500, font: 14, opacity: 1 }, { area: 2500, font: 14, opacity: 0.3 }).flag,
+  );
 });

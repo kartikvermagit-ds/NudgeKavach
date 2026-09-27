@@ -88,11 +88,20 @@
       );
       lastUrl = location.href;
     }
-    document.querySelectorAll('input[type="checkbox"]').forEach((el) => {
+    const isChecked = (el) =>
+      el.matches?.('input[type="checkbox"]')
+        ? el.checked
+        : el.getAttribute('aria-checked') === 'true' || el.classList.contains('checked');
+    const isRequired = (el) =>
+      el.matches?.('input[type="checkbox"]')
+        ? el.required
+        : el.getAttribute('aria-required') === 'true' || el.hasAttribute('required');
+
+    document.querySelectorAll('input[type="checkbox"], [role="checkbox"]').forEach((el) => {
       if (!visible(el) || checkedSeen.has(el)) return;
       checkedSeen.add(el);
       const label = labelFor(el);
-      if (el.checked && !el.required && R.optional(label) && !touched.has(el)) {
+      if (isChecked(el) && !isRequired(el) && R.optional(label) && !touched.has(el)) {
         add(
           'prechecked',
           el,
@@ -130,10 +139,14 @@
             /^(reject|decline)(?: all| optional| cookies)?[.!]?$/i.test(choiceText(x)),
         );
         if (!reject) continue;
-        const measure = (x) => ({
-          area: x.getBoundingClientRect().width * x.getBoundingClientRect().height,
-          font: parseFloat(getComputedStyle(x).fontSize),
-        });
+        const measure = (x) => {
+          const s = getComputedStyle(x);
+          return {
+            area: x.getBoundingClientRect().width * x.getBoundingClientRect().height,
+            font: parseFloat(s.fontSize),
+            opacity: parseFloat(s.opacity) || 1,
+          };
+        };
         const a = measure(el),
           b = measure(reject),
           p = R.prominence(a, b);
@@ -697,7 +710,7 @@
       childList: true,
       characterData: true,
       attributes: true,
-      attributeFilter: ['checked', 'hidden', 'style', 'class', 'aria-hidden'],
+      attributeFilter: ['checked', 'hidden', 'style', 'class', 'aria-hidden', 'aria-checked'],
     });
     // Poll property-only checkbox changes and CSS/layout changes not exposed as mutations.
     interval = setInterval(() => {
@@ -721,7 +734,9 @@
   function interaction(event) {
     if (!event.isTrusted || own(event.target)) return;
     const target = event.target;
-    if (target.matches?.('input[type="checkbox"]')) touched.add(target);
+    if (target.matches?.('input[type="checkbox"], [role="checkbox"]')) touched.add(target);
+    const roleBox = target.closest?.('[role="checkbox"]');
+    if (roleBox) touched.add(roleBox);
     const label = target.closest?.('label');
     if (label?.control) touched.add(label.control);
   }
