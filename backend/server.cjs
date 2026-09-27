@@ -85,13 +85,14 @@ function createServer() {
 
 if (require.main === module) {
   const port = Number(process.env.PORT || 4173);
+  const host = process.env.HOST || '0.0.0.0';
   if (!Number.isInteger(port) || port < 1 || port > 65535) {
     console.error('PORT must be an integer from 1 to 65535.');
     process.exitCode = 1;
   } else {
     const server = createServer();
-    server.listen(port, '127.0.0.1', () =>
-      console.log(`NudgeKavach demo: http://127.0.0.1:${port}/`),
+    server.listen(port, host, () =>
+      console.log(`NudgeKavach server running on http://${host}:${port}/`),
     );
     server.on('error', (error) => {
       console.error(`Could not start demo: ${error.message}`);
