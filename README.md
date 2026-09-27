@@ -82,12 +82,15 @@ Open **Clean comparison** for equal cookie buttons, an unchecked optional add-on
 ## Panel and timeline
 
 - **Locate on page** scrolls to the source element; amber outlines show observations.
+- **Copy evidence** copies the observation, matched rule and cautious interpretation; a selectable-text fallback is available when clipboard access is blocked.
 - **Export JSON** downloads the evidence report and timeline.
 - **Pause / Resume** controls collection; events during a pause are unknown.
 - **Hide panel** closes the UI while monitoring continues.
 - **Highlights** toggles the overlays.
 
 Findings remain as session history even if a checkbox changes or a cookie banner disappears. Reload to clear the session and establish a new baseline. A route change inside one document keeps the previous baseline and is recorded in the timeline.
+
+The live summary shows findings, unique pattern types and session duration. Numbered source markers match the evidence cards. Timeline timestamps are shown in the browser's local time; only observed events are included. Counts and evidence categories are not risk scores or confidence percentages.
 
 ## Development and verification
 

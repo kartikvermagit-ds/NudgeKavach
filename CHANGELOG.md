@@ -2,6 +2,14 @@
 
 This file records user-visible changes. Version numbers describe the project; they do not imply that a Chrome Web Store release has been published.
 
+## Unreleased — UI/UX refresh
+
+- Refined the Field storefront and guide with product hierarchy, demo ratings, shipping information and responsive layouts.
+- Redesigned the launcher, audit panel, popup, evidence cards and numbered source markers using the existing forest/lime/amber palette.
+- Added live session summary, copy-evidence action with manual fallback, chronological timeline presentation and explicit popup states.
+- Improved keyboard focus, empty/paused states, selectable evidence and reduced-motion support.
+- Preserved all five detector rules, cautious interpretations, exported report semantics, clean-mode controls and local-only analysis.
+
 ## 0.1.0 — 2026-09-26
 
 ### Added

@@ -3,99 +3,176 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Field / NudgeKavach Demo Store</title>
+    <meta name="theme-color" content="#f5f5ed" />
+    <title>Field One — A little more quiet.</title>
     <link rel="stylesheet" href="store.css" />
     <script src="store.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#product">Skip to product</a>
     <div class="demo-bar">
-      <span>NUDGEKAVACH LAB / CATALYST HACK 2026</span
-      ><span>Controlled demo · No real purchases</span>
+      <span>THOUGHTFUL OBJECTS. EVERYDAY MOMENTS.</span>
+      <span>Controlled demonstration environment</span>
     </div>
-    <header>
-      <a class="brand" href="/">field<span>®</span></a>
-      <nav>
-        <a href="?mode=tricky">Pattern store</a><a href="?mode=clean">Clean comparison</a
-        ><a href="guide.html">Demo guide ↗</a>
+    <header class="store-header">
+      <a class="brand" href="/" aria-label="Field home">field<span>®</span></a>
+      <nav aria-label="Store navigation">
+        <a class="pattern-link" href="?mode=tricky">Pattern store</a>
+        <a class="clean-link" href="?mode=clean">Clean comparison</a>
+        <a href="guide.html">Demo guide <span aria-hidden="true">↗</span></a>
       </nav>
-      <span class="bag">BAG / 01</span>
+      <a class="bag" href="#checkout-summary" aria-label="View bag, one product">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 8h14l1 13H4L5 8Z" />
+          <path d="M8 9V6a4 4 0 0 1 8 0v3" />
+        </svg>
+        <span>Bag <b>01</b></span>
+      </a>
     </header>
     <main>
-      <div class="breadcrumb">EVERYDAY OBJECTS / AUDIO / FIELD ONE</div>
-      <section class="product">
+      <div class="breadcrumb">
+        <span>Everyday objects</span><span aria-hidden="true">/</span><span>Audio</span
+        ><span aria-hidden="true">/</span><b>Field One</b>
+      </div>
+      <section class="product" id="product" aria-labelledby="product-title">
         <div class="visual">
-          <span class="edition">DESIGNED FOR YOUR EVERYDAY</span>
-          <div class="headphones" aria-label="Illustration of green over-ear headphones" role="img">
+          <div class="visual-top">
+            <span class="edition">THE EVERYDAY COLLECTION</span
+            ><span class="visual-index">01 / 01</span>
+          </div>
+          <span class="visual-word" aria-hidden="true">quiet.</span>
+          <div
+            class="headphones"
+            aria-label="Original illustration of moss-green over-ear headphones"
+            role="img"
+          >
             <div class="arch"></div>
-            <div class="ear left"></div>
-            <div class="ear right"></div>
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+            <div class="ear left"><span></span></div>
+            <div class="ear right"><span></span></div>
           </div>
           <div class="visual-footer">
-            <span>01 — MOSS GREEN</span><span>FORM MEETS FOCUS.</span>
+            <span><i class="color-dot" aria-hidden="true"></i>MOSS GREEN</span
+            ><span>DESIGNED TO TUNE OUT.</span>
           </div>
         </div>
         <div class="description">
-          <div class="eyebrow">LESS NOISE. MORE YOU.</div>
-          <h1>A little quiet.<br />A lot of possibility.</h1>
+          <div class="eyebrow">WIRELESS OVER-EAR HEADPHONES</div>
+          <h1 id="product-title">Field One.</h1>
+          <p class="product-line">A little more quiet.<br />A little more you.</p>
           <p class="intro">
-            Meet Field One. Wireless comfort, thoughtful design, and a soundtrack that follows you.
+            Find your focus in the everyday. Soft-touch comfort, considered details, and your
+            favorite sounds, wherever the day goes.
           </p>
-          <div class="price">₹2,499 <span>Field One / Moss</span></div>
-          <div class="urgency" id="offer">
-            <span>Launch offer ends in </span><strong id="countdown">00:12</strong>
+          <div class="rating">
+            <span class="stars" aria-hidden="true">★★★★★</span><b>4.8</b><span>128 reviews</span
+            ><small>Fictional demo rating</small>
           </div>
-          <ul class="specs">
-            <li>40-hour battery</li>
-            <li>Soft-touch cushions</li>
-            <li>Two-year warranty</li>
+          <div class="price">₹2,499 <span>Field One / Moss Green</span></div>
+          <ul class="specs" aria-label="Product features">
+            <li><span aria-hidden="true">↗</span>40-hour battery</li>
+            <li><span aria-hidden="true">◌</span>Soft-touch cushions</li>
+            <li><span aria-hidden="true">✓</span>Two-year warranty</li>
           </ul>
+          <div class="urgency" id="offer">
+            <span>Launch offer ends in</span><strong id="countdown">00:12</strong>
+          </div>
           <label class="addon"
-            ><input type="checkbox" id="protection" checked />
-            <span>Optional protection plan <b>₹399</b></span></label
+            ><input type="checkbox" id="protection" checked /><span
+              >Optional protection plan <b>₹399</b></span
+            ></label
           >
-          <button class="primary" id="checkout">Continue to checkout <span>↗</span></button>
-          <p class="fine">Demo only. No payment details are collected.</p>
+          <button class="primary" id="checkout">
+            Continue to checkout <span aria-hidden="true">↗</span>
+          </button>
+          <div class="shipping">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 5h12v13H2zM14 10h4l4 4v4h-8" />
+              <circle cx="6" cy="18" r="2" />
+              <circle cx="18" cy="18" r="2" /></svg
+            ><span
+              >Complimentary delivery <span class="shipping-divider">·</span> Dispatch in 2–3
+              days</span
+            >
+          </div>
+          <p class="fine">Fictional product. No payment details are collected.</p>
         </div>
       </section>
-      <section class="lower">
-        <div>
-          <div class="eyebrow">THE CHECKOUT</div>
-          <h2>Know what you’re paying.</h2>
-          <p class="muted">Watch this summary as you continue to checkout.</p>
+      <section class="lower" aria-label="Checkout and mailing list">
+        <div class="checkout-section" id="checkout-summary">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">YOUR BAG / 01</div>
+              <h2>The good part is next.</h2>
+            </div>
+            <span class="section-index" aria-hidden="true">01</span>
+          </div>
+          <p class="muted">A little quiet, ready for your everyday.</p>
           <div class="summary">
-            <div class="row"><span>Field One</span><span>₹2,499</span></div>
+            <div class="summary-product">
+              <span class="product-thumb" aria-hidden="true"><i></i></span>
+              <div>
+                <b>Field One</b>
+                <p>Moss Green <span>·</span> Quantity 1</p>
+              </div>
+              <span>₹2,499</span>
+            </div>
             <div class="row" id="protection-row"><span>Protection plan</span><span>₹399</span></div>
+            <div class="row delivery-row"><span>Delivery</span><span>Complimentary</span></div>
             <p id="fee" hidden>Platform fee: ₹149</p>
             <div class="row total"><span>Total</span><strong id="total">₹2,898</strong></div>
             <p id="checkout-status" role="status">Your bag is ready.</p>
           </div>
         </div>
-        <aside class="newsletter">
-          <div class="eyebrow">A LITTLE SOMETHING EXTRA</div>
-          <h2>Make room for 10% off.</h2>
-          <p>Join the Field mailing list for launch updates.</p>
-          <button class="primary" id="subscribe">Yes, send me offers</button
-          ><button class="shame" id="decline">No thanks, I love paying full price</button>
+        <aside class="newsletter" aria-labelledby="newsletter-title">
+          <div class="newsletter-top">
+            <div class="eyebrow">LET'S KEEP IN TOUCH</div>
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <rect x="6" y="10" width="28" height="22" rx="3" />
+              <path d="m7 12 13 11 13-11M7 30l10-10m16 10L23 20" />
+            </svg>
+          </div>
+          <h2 id="newsletter-title">Good things.<br />A little less.</h2>
+          <p>
+            Take 10% off your next everyday favorite. Join the Field mailing list for launch
+            updates.
+          </p>
+          <button class="primary" id="subscribe">
+            Yes, send me offers <span aria-hidden="true">↗</span>
+          </button>
+          <button class="shame" id="decline">No thanks, I love paying full price</button>
           <p id="newsletter-status" role="status"></p>
+          <p class="newsletter-note">
+            This demo does not collect an email or create a subscription.
+          </p>
         </aside>
       </section>
-      <section class="lab-note">
+      <section class="cookies" aria-label="Cookie choices">
+        <div class="cookie-copy">
+          <span class="cookie-icon" aria-hidden="true">◌</span>
+          <div>
+            <b>Your browsing, your choice.</b>
+            <p>Allow optional cookies for personalized recommendations?</p>
+          </div>
+        </div>
+        <div class="cookie-actions">
+          <button id="accept">Accept all</button><button id="reject">Reject optional</button>
+        </div>
+      </section>
+      <section class="lab-note" aria-label="Demonstration mode">
         <b id="mode-label">PATTERN STORE</b>
         <p id="mode-description">
           Five deliberately questionable UI patterns. Open NudgeKavach, continue to checkout, and
           watch the countdown reset.
         </p>
+        <a href="guide.html">Presenter guide <span aria-hidden="true">↗</span></a>
       </section>
     </main>
-    <section class="cookies" aria-label="Cookie choices">
-      <div>
-        <b>Your browsing, your choice.</b>
-        <p>Allow optional cookies for personalized recommendations?</p>
-      </div>
-      <div class="cookie-actions">
-        <button id="accept">Accept all</button><button id="reject">Reject optional</button>
-      </div>
-    </section>
-    <footer>FIELD IS A FICTIONAL STORE · NUDGEKAVACH DEMO · BUILT TO MAKE CHOICE VISIBLE</footer>
+    <footer>
+      <a class="footer-brand" href="/">field<span>®</span></a>
+      <p>Fictional store. Thoughtful choices.</p>
+      <span>NUDGEKAVACH / CATALYST HACK 2026</span>
+    </footer>
   </body>
 </html>

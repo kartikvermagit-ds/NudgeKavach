@@ -2,18 +2,59 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NudgeKavach</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
-  <body>
-    <small>YOUR CHOICE. YOUR CONTROL.</small>
-    <h1>NudgeKavach</h1>
-    <p>See the manipulation before you click.</p>
-    <button id="scan">Scan this page</button>
-    <p id="status" role="status">Local analysis. No account, AI key, or data upload.</p>
-    <p class="note">
-      Start before interacting to capture stronger evidence. Reloading clears the session.
-    </p>
+  <body data-state="ready">
+    <header class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M16 3 27 7v8c0 7-6 11-11 14C11 26 5 22 5 15V7L16 3Z" />
+          <path d="M8.5 15.5s3-4.5 7.5-4.5 7.5 4.5 7.5 4.5-3 4.5-7.5 4.5-7.5-4.5-7.5-4.5Z" />
+          <circle cx="16" cy="15.5" r="2" />
+        </svg>
+      </span>
+      <div>
+        <h1>NudgeKavach</h1>
+        <p>YOUR CHOICE. YOUR CONTROL.</p>
+      </div>
+      <span class="version">MVP</span>
+    </header>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">YOUR DIGITAL MANIPULATION AUDITOR</p>
+        <h2>See the Manipulation<br />Before You Click.</h2>
+        <p class="intro-copy">Make hidden nudges visible with evidence you can inspect.</p>
+      </div>
+      <section class="status-card" role="status" aria-live="polite" aria-atomic="true">
+        <div class="status-heading">
+          <span class="status-dot" aria-hidden="true"></span>
+          <h3 id="state-title">Ready to scan</h3>
+        </div>
+        <p id="status">Start an audit of this page to collect local observations and NudgeProof.</p>
+      </section>
+      <button id="scan" type="button">
+        <span id="scan-label">Scan this page</span>
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 10h12m-5-5 5 5-5 5" />
+        </svg>
+      </button>
+      <p class="privacy">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <rect x="3" y="7" width="10" height="7" rx="2" />
+          <path d="M5 7V5a3 3 0 0 1 6 0v2" />
+        </svg>
+        Analysis runs locally in your browser.
+      </p>
+      <div class="principles" aria-label="Audit principles">
+        <span>Local rules</span><span>NudgeProof</span><span>No data upload</span>
+      </div>
+    </main>
+    <footer>
+      <p>Start before interacting to capture stronger evidence. Reloading clears the session.</p>
+      <span>Evidence, not a verdict.</span>
+    </footer>
     <script src="popup.js"></script>
   </body>
 </html>

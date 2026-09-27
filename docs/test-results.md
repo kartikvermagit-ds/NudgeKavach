@@ -21,6 +21,8 @@ Verified on Windows with Node.js 22.23.2, Playwright 1.62.1 and Chrome for Testi
 
 ## Test scope
 
+The UI refresh additionally checks that evidence categories and complete interpretation text remain unchanged in cards; findings and pattern counts match the report; timeline timestamps are chronological; highlights toggle; numbered markers and Locate work; scan updates retain keyboard focus; and closing returns focus to the launcher. Copy payload and manual fallback are tested with clipboard I/O substituted, so automated tests do not overwrite the user's clipboard. Desktop/mobile screenshots cover the audit panel, empty state, storefront, guide and popup. At 390px the store/guide do not overflow horizontally and the panel leaves page context visible.
+
 The automated popup check opens the popup as an extension tab and substitutes active-tab selection to point at the monitored demo tab. The browser still executes the real scripting and messaging APIs using explicit local-host access. An actual toolbar click granting `activeTab` on an unrelated live website remains a manual smoke check; it was not automated. Chrome Web Store installation/publication was not performed.
 
 The curated [demo screenshot](assets/demo-preview.png) shows the loaded extension. The [example report](../tests/fixtures/sample-nudgeproof.json) contains actual observations from the original automated demo run, not fabricated findings. New runs write `test-results/demo-preview.png` and `test-results/nudgeproof.json`, which are ignored by Git; curated assets are not overwritten. Integration tests use an OS-assigned free local port to avoid connecting to an unrelated stale server.

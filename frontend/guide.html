@@ -6,14 +6,24 @@
     <title>NudgeKavach / Demo guide</title>
     <link rel="stylesheet" href="store.css" />
   </head>
-  <body>
-    <div class="demo-bar">CATALYST HACK 2026 · DEMONSTRATION GUIDE</div>
-    <header><a class="brand" href="/">NudgeKavach</a><a href="/">Open store ↗</a></header>
-    <main>
+  <body class="guide-page">
+    <a class="skip-link" href="#walkthrough">Skip to walkthrough</a>
+    <div class="demo-bar">
+      <span>CATALYST HACK 2026 / DIGITAL TRUST</span
+      ><span>Controlled demonstration environment</span>
+    </div>
+    <header class="store-header">
+      <a class="brand guide-brand" href="/">NudgeKavach<span>◈</span></a
+      ><a href="/">Open store ↗</a>
+    </header>
+    <main class="guide-main">
       <div class="eyebrow">SEE THE MANIPULATION BEFORE YOU CLICK.</div>
       <h1>Don’t just flag it.<br />Show the evidence.</h1>
-      <p>Load the extension first. Then open the pattern store in a fresh tab.</p>
-      <ol>
+      <p class="guide-intro">
+        A 90-second walkthrough of evidence-first auditing. Load the extension, then open the
+        pattern store in a fresh tab.
+      </p>
+      <ol class="walkthrough" id="walkthrough" aria-label="Demo walkthrough">
         <li>
           Click the green NudgeKavach launcher. Expect three initial observations: optional add-on,
           unequal cookie choices, and confirm-shaming.
@@ -26,28 +36,42 @@
           Wait about 15 seconds. The countdown reaches zero, then returns to 12 seconds. The
           timeline records the jump.
         </li>
-        <li>Use “Locate on page” and “Export JSON” to inspect the evidence.</li>
+        <li>
+          Use “Locate on page” to match a numbered source with its card. Read NudgeProof and its
+          limitation, then use “Copy evidence” or “Export JSON”.
+        </li>
         <li>
           Open the clean comparison. Expect zero findings; choose the add-on yourself and continue
           to checkout. These actions should not add findings.
         </li>
       </ol>
-      <h2>What the proof means</h2>
-      <p>
-        Observations are local signals, not legal conclusions. A timer reset can have a valid
-        reason. A later fee can be a recalculation. An already-selected control can reflect a saved
-        preference.
-      </p>
-      <h2>Reliable presentation</h2>
-      <p>
-        Keep the page in the foreground. Do not dismiss cookies before demonstrating the choice
-        imbalance. Reload to reset findings and timer state. The lab does not make purchases,
-        collect emails, or install tracking cookies.
-      </p>
-      <p>
+      <section class="guide-notes" aria-label="Understanding the demonstration">
+        <div>
+          <h2>What the proof means</h2>
+          <p>
+            Observations are local signals, not legal conclusions. A timer reset can have a valid
+            reason. A later fee can be a recalculation. An already-selected control can reflect a
+            saved preference.
+          </p>
+        </div>
+        <div>
+          <h2>Reliable presentation</h2>
+          <p>
+            Keep the page in the foreground. Do not dismiss cookies before demonstrating the choice
+            imbalance. Reload to reset findings and timer state. The lab does not make purchases,
+            collect emails, or install tracking cookies.
+          </p>
+        </div>
+      </section>
+      <p class="guide-actions">
         <a href="/?mode=tricky">PATTERN STORE ↗</a> &nbsp;
         <a href="/?mode=clean">CLEAN COMPARISON ↗</a>
       </p>
     </main>
+    <footer>
+      <span>NUDGEKAVACH</span>
+      <p>Evidence, not a verdict.</p>
+      <span>ANALYSIS STAYS IN YOUR BROWSER</span>
+    </footer>
   </body>
 </html>

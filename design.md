@@ -20,9 +20,10 @@ The panel is part of the content script. It is not Chrome's native Side Panel AP
 
 1. **Evidence category:** Observed state, Observed change, Observed behavior, or Heuristic.
 2. **Finding title:** a cautious description such as “Suspicious countdown reset.”
-3. **NudgeProof:** the observed text, measurement or transition, with the local rule where applicable.
-4. **Interpretation:** why the signal matters and a plausible limitation or alternative explanation.
-5. **Locate on page:** scroll to the original source when it remains connected.
+3. **Plain-language summary:** a short description of the observation.
+4. **NudgeProof:** the unchanged observed text, measurement or transition, followed by the rule that matched.
+5. **Why it matters / Limitation:** the existing interpretation is separated at its first sentence; its meaning and cautious wording are preserved.
+6. **Locate on page / Copy evidence:** numbered source markers match the card. Copy includes the evidence category, first-observed timestamp, observations, rule and complete interpretation.
 
 The JSON field named `confidence` stores an evidence category. It is not a statistical confidence score. Do not turn these labels into percentages or claim that a heuristic proves deceptive intent.
 
@@ -44,7 +45,9 @@ The store uses cream, moss and forest green, generous whitespace, and an origina
 | Highlight border             | `#ed942f`     | Source-element outline           |
 | Store keyboard focus         | `#367aa6`     | Visible focus outline            |
 
-The store uses Arial/Helvetica with a sans-serif fallback. The panel uses the system font. No font download is required. Product content uses a two-column layout on wide screens and a single column below 750px. The panel is at most 400px wide, with 16px horizontal margins on narrow screens.
+The store and auditor use locally available sans-serif fonts. No font download is required. Product content uses a two-column layout on wide screens and a single column below 750px. The desktop panel is at most 410px wide. Below 600px it becomes a bottom-aligned panel capped at 72% of the viewport height, leaving page context visible.
+
+The live summary separates findings from unique pattern types and shows wall-clock session duration, including paused time. These counts do not imply severity, safety, prevalence or statistical confidence. The monitoring status remains independently visible.
 
 ## Interaction behavior
 
@@ -52,8 +55,13 @@ The store uses Arial/Helvetica with a sans-serif fallback. The panel uses the sy
 - Opening or hiding the panel does not change monitoring. **Pause** stops scans; **Resume** continues with the existing session state.
 - **Highlights** toggles overlay outlines. The overlays do not intercept pointer input or change the geometry being measured.
 - Findings remain as session history even if a user corrects a choice or dismisses a banner. Reloading creates a new baseline.
-- The timeline shows the newest 30 events. JSON export contains up to 120 retained events.
+- The timeline shows the latest 30 actual events in chronological order, with local clock timestamps, elapsed times and connecting lines. It does not synthesize unrecorded timer ticks. JSON export remains unchanged and contains up to 120 retained events.
 - The empty state explains that delayed behaviors need observation time and that zero findings is not a safety guarantee.
+- Copy uses the clipboard only on an explicit click. If clipboard access is unavailable, selectable text is provided for manual copying; no clipboard permission is requested.
+- Source markers do not intercept clicks or change layout. Locate respects reduced-motion settings; a source no longer visible remains in history with its locate button disabled.
+- Opening the panel focuses its close button; closing returns focus to the launcher. Escape closes it. Periodic updates retain card controls and do not move focus.
+- Panel/card transitions last 180–240ms, and the launcher pulses once only when a new finding appears. Reduced-motion preferences disable these effects.
+- The popup distinguishes ready, pending, active, paused, unsupported and activation-error states. A read-only status request avoids claiming that a paused session is monitoring.
 
 ## Accessibility and content rules
 

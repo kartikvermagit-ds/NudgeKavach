@@ -89,6 +89,8 @@ State lives in the content script's memory for one document. `WeakMap`/`WeakSet`
 
 The field `confidence` contains a category such as `Observed behavior`; it is not a calibrated probability. Element references remain in memory and are removed from export. No screenshot or full-page DOM snapshot is included.
 
+UI-only descriptions explain rules and separate each existing interpretation into “Why it matters” and “Limitation.” They do not modify findings, exported fields, thresholds or observation timing. Numbered markers and counts derive from the existing finding map. Session duration is elapsed wall-clock time, including pauses. Copy evidence is a user-triggered local action with selectable-text fallback; JSON export retains its existing schema.
+
 Retention is bounded to 100 findings, 120 timeline events and eight evidence strings per finding. The first evidence string is retained as later evidence rolls over. Text snippets are normalized and capped at 240 characters. The UI shows the latest 30 timeline events.
 
 ## Rendering and trust boundaries
@@ -96,6 +98,8 @@ Retention is bounded to 100 findings, 120 timeline events and eight evidence str
 The panel lives in a closed shadow root to reduce collisions with page styles and to keep its own text out of ordinary scans. Captured text is rendered through `textContent`. Highlight rectangles use a separate overlay layer with pointer events disabled, so highlighting does not resize measured controls or prevent clicks.
 
 A shadow root is UI isolation, not a security boundary against a hostile website. A page controls its own DOM and can obscure or remove the host element. Findings are observations, not cryptographic attestations.
+
+The popup still activates through `executeScript` and `NK_OPEN`; a subsequent read-only `NK_REPORT` accurately distinguishes active from paused monitoring without resuming it. No additional permissions or network services are introduced by the UI.
 
 ## Session limitations
 

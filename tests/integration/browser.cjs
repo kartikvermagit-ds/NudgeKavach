@@ -105,6 +105,113 @@ async function until(fn, timeout = 6000) {
       functionDeclaration: 'function(){this.click()}',
     });
   }
+  // Inspect the actual closed-shadow UI through DevTools, without opening it in product code.
+  async function panelEvaluate(fn, args = []) {
+    const { root: dom } = await cdp.send('DOM.getDocument', { depth: -1, pierce: true });
+    function findHost(node) {
+      if (node.nodeName === 'NUDGE-KAVACH') return node;
+      for (const child of node.children || []) {
+        const found = findHost(child);
+        if (found) return found;
+      }
+    }
+    const host = findHost(dom);
+    assert.ok(host?.shadowRoots?.[0], 'Audit shadow root exists');
+    const { object } = await cdp.send('DOM.resolveNode', { nodeId: host.shadowRoots[0].nodeId });
+    const value = await cdp.send('Runtime.callFunctionOn', {
+      objectId: object.objectId,
+      functionDeclaration: fn.toString(),
+      arguments: args.map((value) => ({ value })),
+      returnByValue: true,
+      awaitPromise: true,
+      userGesture: true,
+    });
+    if (value.exceptionDetails) throw new Error(JSON.stringify(value.exceptionDetails));
+    return value.result.value;
+  }
+  const ui = await panelEvaluate(function () {
+    return {
+      counts: ['finding-total', 'pattern-total'].map((id) => this.getElementById(id).textContent),
+      categories: [...this.querySelectorAll('article .confidence')].map((el) => el.textContent),
+      interpretation: [...this.querySelectorAll('article')].map(
+        (el) =>
+          el.querySelector('.interpretation').textContent +
+          ' ' +
+          el.querySelector('.limitation-text').textContent,
+      ),
+      markers: [...this.querySelectorAll('.source-number')].map((el) => el.textContent),
+      times: [...this.querySelectorAll('#events time')].map((el) => el.dateTime),
+      expanded: this.getElementById('launcher').getAttribute('aria-expanded'),
+    };
+  });
+  assert.deepEqual(ui.counts, ['5', '5']);
+  assert.deepEqual(
+    ui.categories,
+    result.findings.map((f) => f.confidence),
+  );
+  assert.deepEqual(
+    ui.interpretation,
+    result.findings.map((f) => f.interpretation),
+  );
+  assert.deepEqual(ui.times, [...ui.times].sort());
+  assert.equal(ui.expanded, 'true');
+  assert.ok(ui.markers.length > 0);
+  await panelButton('Highlights');
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.querySelectorAll('.outline').length;
+    }),
+    0,
+  );
+  await panelButton('Highlights');
+  assert.ok(
+    await panelEvaluate(function () {
+      return this.querySelectorAll('.outline').length > 0;
+    }),
+  );
+  await panelEvaluate(function () {
+    this.querySelector('.locate').focus();
+  });
+  await evaluate('globalThis.__nudgeKavach.scan()');
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.activeElement?.className;
+    }),
+    'locate',
+  );
+  await panelEvaluate(function () {
+    this.querySelector('article .locate').click();
+  });
+  assert.ok(
+    await panelEvaluate(function () {
+      return this.querySelector('.outline.located') !== null;
+    }),
+  );
+  // Isolate clipboard I/O while exercising the real click handler and copied evidence payload.
+  await evaluate(
+    'globalThis.__nkOriginalWrite = navigator.clipboard.writeText; navigator.clipboard.writeText = async text => { globalThis.__nkCopied = text; }',
+  );
+  await panelButton('Copy evidence');
+  await until(async () =>
+    (await evaluate('globalThis.__nkCopied'))?.includes(result.findings[0].interpretation),
+  );
+  await evaluate("navigator.clipboard.writeText = async () => { throw new Error('Unavailable'); }");
+  await panelButton('Copy evidence');
+  await until(async () =>
+    panelEvaluate(function () {
+      return !this.querySelector('.copy-fallback').hidden;
+    }),
+  );
+  await evaluate('navigator.clipboard.writeText = globalThis.__nkOriginalWrite');
+  await panelEvaluate(function () {
+    this.querySelector('.copy-fallback').hidden = true;
+    this.querySelector('.copy-status').textContent = '';
+  });
+  const exportSnapshot = await report();
+  assert.deepEqual(
+    exportSnapshot.findings.map((f) => f.interpretation),
+    result.findings.map((f) => f.interpretation),
+  );
   const downloaded = page.waitForEvent('download');
   await panelButton('Export JSON');
   const download = await downloaded;
@@ -113,9 +220,47 @@ async function until(fn, timeout = 6000) {
   assert.ok(!downloadedReport.page.includes('?'));
   await panelButton('Pause');
   assert.equal((await report()).monitoring, false);
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.getElementById('monitor-status').textContent;
+    }),
+    'Paused',
+  );
   await panelButton('Resume');
   assert.equal((await report()).monitoring, true);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await panelEvaluate(function () {
+    this.querySelector('main').scrollTop = 0;
+    this.getElementById('close').focus({ preventScroll: true });
+  });
   await page.screenshot({ path: path.join(results, 'demo-preview.png'), fullPage: true });
+  await panelEvaluate(function () {
+    this.querySelector('details').scrollIntoView({ block: 'end', behavior: 'instant' });
+  });
+  await page.screenshot({ path: path.join(results, 'timeline-audit.png') });
+  await panelEvaluate(function () {
+    this.querySelector('main').scrollTop = 0;
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.ok(
+    await panelEvaluate(function () {
+      const panel = this.getElementById('panel').getBoundingClientRect();
+      return panel.left >= 0 && panel.right <= innerWidth && panel.height < innerHeight * 0.8;
+    }),
+  );
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+  await page.screenshot({ path: path.join(results, 'mobile-audit.png') });
+  await panelEvaluate(function () {
+    this.getElementById('close').click();
+  });
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.activeElement?.id;
+    }),
+    'launcher',
+  );
+  await page.screenshot({ path: path.join(results, 'mobile-store.png'), fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1100 });
   fs.writeFileSync(path.join(results, 'nudgeproof.json'), JSON.stringify(result, null, 2));
   console.log(
     'PASS: real MV3 auto-load, five findings, evidence, reset timeline, export download, pause/resume, panel screenshot',
@@ -123,6 +268,24 @@ async function until(fn, timeout = 6000) {
   await page.goto(origin + '/?mode=clean');
   world = await extensionWorld();
   assert.equal((await report()).findings.length, 0);
+  await evaluate('globalThis.__nudgeKavach.toggle(true)');
+  assert.ok(
+    await panelEvaluate(function () {
+      return (
+        !this.getElementById('empty').hidden &&
+        this.getElementById('empty').textContent.includes('Zero findings does not guarantee')
+      );
+    }),
+  );
+  await panelButton('Pause');
+  assert.ok(
+    await panelEvaluate(function () {
+      return this.getElementById('empty-monitor').textContent.includes('paused');
+    }),
+  );
+  await panelButton('Resume');
+  await page.screenshot({ path: path.join(results, 'clean-audit.png') });
+  await evaluate('globalThis.__nudgeKavach.toggle(false)');
   await page.check('#protection');
   await page.click('#checkout');
   await page.waitForTimeout(1800);
@@ -144,8 +307,12 @@ async function until(fn, timeout = 6000) {
   // Popup must load under extension CSP and perform actual scripting/message APIs.
   const popup = await context.newPage();
   await popup.goto(`chrome-extension://${extensionId}/popup.html`);
+  assert.equal(await popup.locator('body').getAttribute('data-state'), 'ready');
+  await popup.setViewportSize({ width: 380, height: 720 });
+  await popup.screenshot({ path: path.join(results, 'popup-ready.png') });
   await popup.click('#scan');
   await until(async () => /Open a regular HTTP/.test(await popup.locator('#status').textContent()));
+  assert.equal(await popup.locator('body').getAttribute('data-state'), 'unsupported');
   // Point popup tab query to target tab while exercising real executeScript/sendMessage.
   await popup.evaluate(async () => {
     const tabs = await chrome.tabs.query({});
@@ -170,6 +337,16 @@ async function until(fn, timeout = 6000) {
     throw new Error(`${error.message}: ${await popup.locator('#status').textContent()}`);
   });
   assert.equal((await report()).findings.length, 1);
+  assert.equal(await popup.locator('body').getAttribute('data-state'), 'active');
+  const guide = await context.newPage();
+  await guide.goto(origin + '/guide.html');
+  await guide.screenshot({ path: path.join(results, 'guide-desktop.png'), fullPage: true });
+  await guide.setViewportSize({ width: 390, height: 844 });
+  assert.equal(
+    await guide.evaluate(() => document.documentElement.scrollWidth > innerWidth),
+    false,
+  );
+  await guide.screenshot({ path: path.join(results, 'guide-mobile.png'), fullPage: true });
   assert.deepEqual(errors, []);
   console.log(
     'PASS: popup CSP, restricted-page error, scripting, messaging, duplicate injection guard',
