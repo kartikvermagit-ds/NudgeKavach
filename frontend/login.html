@@ -1,336 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auditor Login &mdash; NudgeKavach Security Gateway</title>
-    <meta
-      name="description"
-      content="Secure, zero-egress auditor login gateway for NudgeKavach dark pattern observation and compliance verification."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/jpeg" href="logo.jpg" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c1816" />
+    <title>Get started — NudgeKavach</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="login.css" />
+    <script src="login.js" defer></script>
   </head>
   <body>
-    <!-- Ambient Cyber Grid Background & Glow -->
-    <div class="cyber-grid" aria-hidden="true"></div>
-    <div class="ambient-glow" aria-hidden="true"></div>
-
-    <div class="login-page-wrapper">
-      <!-- Top Navigation Header -->
-      <header class="login-header">
-        <a href="landing.html" class="brand-logo-link">
-          <div class="brand-icon-wrap">
-            <img src="logo.png" alt="NudgeKavach Shield Logo" class="brand-img-logo" />
-          </div>
-          <div class="brand-text-wrap">
-            <span class="brand-name">NudgeKavach</span>
-            <span class="brand-badge">SECURITY GATEWAY</span>
-          </div>
-        </a>
-
-        <nav class="header-nav-links">
-          <a href="landing.html" class="nav-back-link">
-            <svg viewBox="0 0 16 16" fill="none" class="nav-back-ico" aria-hidden="true">
-              <path d="M10 13 5 8l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Back to Showcase</span>
-          </a>
-          <a href="index.html" class="nav-demo-btn">
-            <span>Demo Store</span>
-            <span class="badge-mini">5 Patterns</span>
-          </a>
+    <a class="skip-link" href="#main">Skip to setup</a>
+    <header class="masthead">
+      <div class="container">
+        <a class="brand" href="landing.html"
+          ><img src="logo.png" alt="" /><span
+            >NudgeKavach<small>INTERFACE MANIPULATION AUDITOR</small></span
+          ></a
+        >
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="landing.html">Product</a><a href="guide.html">Jury Console</a
+          ><a class="button" href="index.html?mode=tricky">Open demo ↗</a>
         </nav>
-      </header>
-
-      <!-- Main Login Stage -->
-      <main class="login-main">
-        <div class="login-container">
-          <!-- Left Column: Security Enclave Specs & Live Status -->
-          <section class="security-intro-col">
-            <div class="intro-badge">
-              <span class="pulse-indicator"></span>
-              <span>AIR-GAPPED V8 ENCLAVE</span>
-            </div>
-
-            <h1 class="intro-heading">
-              Secure Auditor Access &amp; Compliance Portal
-            </h1>
-            <p class="intro-subtext">
-              Authenticate to access verified NudgeProof audit logs, run headless dark pattern crawls, and review cryptographic checkout baselines.
+      </div>
+    </header>
+    <main class="container" id="main">
+      <div class="page-hero">
+        <div class="eyebrow">GET STARTED / NO ACCOUNT REQUIRED</div>
+        <h1>Your browser observes.<br />Your workspace reviews.</h1>
+        <p>
+          Load the extension, run a local audit, and take the same report into the Windows
+          companion. There is no sign-in or cloud account in this MVP.
+        </p>
+      </div>
+      <div class="setup-layout">
+        <div class="setup-stack">
+          <section class="surface setup-card" aria-labelledby="browser-setup">
+            <div class="eyebrow">01 / BROWSER</div>
+            <h2 id="browser-setup">Install in Chrome or Edge</h2>
+            <p>
+              Download the project from its repository and extract it locally. Both browsers use the
+              same <code>extension/</code> folder.
             </p>
-
-            <!-- Feature Highlight List -->
-            <div class="security-highlights">
-              <div class="sec-highlight-item">
-                <div class="sec-ico-box">
-                  <svg viewBox="0 0 24 24" fill="none" class="h-icon" aria-hidden="true">
-                    <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Zero-Egress Authentication</strong>
-                  <span>Credentials never leave your tab. Session tokens are generated in-memory.</span>
-                </div>
-              </div>
-
-              <div class="sec-highlight-item">
-                <div class="sec-ico-box">
-                  <svg viewBox="0 0 24 24" fill="none" class="h-icon" aria-hidden="true">
-                    <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Hardware Passkey &amp; WebAuthn</strong>
-                  <span>Supports FIDO2 biometrics, Touch ID, and hardware security keys.</span>
-                </div>
-              </div>
-
-              <div class="sec-highlight-item">
-                <div class="sec-ico-box">
-                  <svg viewBox="0 0 24 24" fill="none" class="h-icon" aria-hidden="true">
-                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Tamper-Immune Audit Trail</strong>
-                  <span>Cryptographic hash chains ensure merchant compliance records cannot be falsified.</span>
-                </div>
-              </div>
+            <div class="browser-path">
+              <code>chrome://extensions</code
+              ><button
+                type="button"
+                data-copy="chrome://extensions"
+                aria-label="Copy Chrome extensions address"
+              >
+                Copy
+              </button>
             </div>
-
-            <!-- Terminal Audit Status Bar -->
-            <div class="intro-terminal-box">
-              <div class="term-header">
-                <span class="term-dot green"></span>
-                <span class="term-title">RUNTIME ENCLAVE MONITOR</span>
-                <span class="term-tag">V8 SANDBOX</span>
-              </div>
-              <div class="term-body">
-                <code>&gt; Sockets: 0 Outbound &middot; TLS Egress: INACTIVE</code>
-                <code>&gt; Storage: SessionRAM (Volatile / Air-Gapped)</code>
-                <code>&gt; Integrity: Deterministic SHA-256 Engine Ready</code>
-              </div>
+            <div class="browser-path">
+              <code>edge://extensions</code
+              ><button
+                type="button"
+                data-copy="edge://extensions"
+                aria-label="Copy Edge extensions address"
+              >
+                Copy
+              </button>
             </div>
+            <p class="copy-status" role="status"></p>
+            <ol>
+              <li>Paste the address for your browser into its address bar.</li>
+              <li>
+                Enable <strong>Developer mode</strong>, choose <strong>Load unpacked</strong>, then
+                select the project's <strong>extension</strong> folder.
+              </li>
+              <li>
+                Start the local demo using the README instructions, then reload the store. Open the
+                floating <strong>NudgeKavach</strong> launcher.
+              </li>
+              <li>
+                On other HTTP/HTTPS pages, use the extension toolbar's
+                <strong>Scan this page</strong>. Browser settings pages cannot be scanned.
+              </li>
+            </ol>
+            <a class="button primary" href="index.html?mode=tricky">Open Pattern Mode ↗</a>
+            <p class="setup-note">
+              Reload the extension after source changes, then refresh the store. A fresh page
+              creates a new observation baseline.
+            </p>
           </section>
-
-          <!-- Right Column: Interactive Login Card -->
-          <section class="login-card-col">
-            <div class="login-card">
-              <!-- Mode Switcher: Standard Login vs Dark Pattern Demo Login -->
-              <div class="card-mode-switcher">
-                <button type="button" class="mode-tab-btn active" id="tab-ethical-mode">
-                  <span>&#128737;&#65039; Ethical Auditor Login</span>
-                </button>
-                <button type="button" class="mode-tab-btn" id="tab-dark-mode">
-                  <span>&#9888;&#65039; Sneaky Login Simulator</span>
-                </button>
-              </div>
-
-              <!-- ETHICAL AUDITOR LOGIN FORM -->
-              <div class="form-mode-container" id="container-ethical-form">
-                <div class="form-header">
-                  <h2>Sign in to Enclave</h2>
-                  <p>Enter your auditor credentials or use a 1-click demo key.</p>
-                </div>
-
-                <!-- 1-Click Fill Demo Credentials Button -->
-                <button type="button" class="btn-quick-fill" id="btn-quick-demo">
-                  <span class="quick-fill-bolt">&#9889;</span>
-                  <span>Auto-Fill Auditor Demo Credentials</span>
-                </button>
-
-                <div class="form-divider">
-                  <span>OR CONTINUE WITH CREDENTIALS</span>
-                </div>
-
-                <form id="auditor-login-form" novalidate>
-                  <!-- Email / Access ID -->
-                  <div class="input-group">
-                    <label for="input-email" class="input-label">Auditor Email / Access Key</label>
-                    <div class="input-field-wrap">
-                      <svg viewBox="0 0 20 20" fill="currentColor" class="field-ico" aria-hidden="true">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                      </svg>
-                      <input
-                        type="email"
-                        id="input-email"
-                        class="form-input"
-                        placeholder="auditor@nudgekavach.local"
-                        autocomplete="email"
-                        required
-                      />
-                    </div>
-                    <span class="input-hint" id="hint-email">Use any valid email or click the auto-fill button above.</span>
-                  </div>
-
-                  <!-- Password / Cryptographic Token -->
-                  <div class="input-group">
-                    <div class="label-row">
-                      <label for="input-password" class="input-label">Master Password / Enclave Token</label>
-                      <a href="#" class="forgot-link" id="link-forgot-pw">Forgot token?</a>
-                    </div>
-                    <div class="input-field-wrap">
-                      <svg viewBox="0 0 20 20" fill="currentColor" class="field-ico" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-                      </svg>
-                      <input
-                        type="password"
-                        id="input-password"
-                        class="form-input"
-                        placeholder="••••••••••••"
-                        autocomplete="current-password"
-                        required
-                      />
-                      <button type="button" class="btn-toggle-pw" id="btn-toggle-pw" aria-label="Toggle password visibility">
-                        <span id="pw-eye-icon">&#128065;</span>
-                      </button>
-                    </div>
-
-                    <!-- Live Password Strength Meter -->
-                    <div class="strength-meter-wrap" id="strength-meter-wrap">
-                      <div class="meter-bar-track">
-                        <div class="meter-bar-fill" id="meter-bar-fill"></div>
-                      </div>
-                      <div class="meter-meta">
-                        <span class="meter-label">Entropy Strength:</span>
-                        <strong class="meter-status" id="meter-status-text">Enter password</strong>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Options Row (Ethical: explicit unchecked by default) -->
-                  <div class="options-row">
-                    <label class="custom-checkbox-wrap">
-                      <input type="checkbox" id="check-remember" />
-                      <span class="custom-check-box"></span>
-                      <span class="check-text">Remember local session (30 days)</span>
-                    </label>
-                    <span class="ethical-tag">&#10003; Explicit Opt-In</span>
-                  </div>
-
-                  <!-- Primary Submit Button -->
-                  <button type="submit" class="btn btn-submit" id="btn-submit-login">
-                    <span class="btn-txt">Authenticate &amp; Open Enclave &rarr;</span>
-                    <span class="btn-spinner" id="btn-spinner" hidden></span>
-                  </button>
-
-                  <!-- Passkey Alternative Option -->
-                  <button type="button" class="btn-passkey-auth" id="btn-passkey">
-                    <svg viewBox="0 0 24 24" fill="none" class="passkey-svg" aria-hidden="true">
-                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12c0-5.52-4.48-10-10-10Z" fill="currentColor"/>
-                    </svg>
-                    <span>Authenticate via Biometric Passkey / Touch ID</span>
-                  </button>
-                </form>
-              </div>
-
-              <!-- SNEAKY / DARK PATTERN SIMULATOR MODE -->
-              <div class="form-mode-container" id="container-dark-form" style="display: none;">
-                <div class="dark-sim-alert">
-                  <span class="sim-badge">&#9888; DECEPTIVE PATTERN DEMONSTRATION</span>
-                  <h3>How Sneaky Websites Manipulate Your Sign-In</h3>
-                  <p>
-                    Commercial services exploit login screens with hidden consent boxes, countdown threats, and guilt triggers. Toggle the shield below to see how NudgeKavach neutralizes them.
-                  </p>
-                </div>
-
-                <div class="sneaky-controls-box">
-                  <!-- Trap 1: Fake Urgency Timer -->
-                  <div class="trap-item">
-                    <div class="trap-label-bar">
-                      <span class="trap-type">DARK PATTERN #03: FAKE URGENCY</span>
-                      <span class="trap-flag">&#9888; Artificial Scarcity</span>
-                    </div>
-                    <div class="trap-timer-preview">
-                      <span>Login slot reserved for:</span>
-                      <strong class="timer-red-glow" id="fake-session-timer">01:45</strong>
-                    </div>
-                  </div>
-
-                  <!-- Trap 2: Prechecked Marketing Consent -->
-                  <div class="trap-item">
-                    <div class="trap-label-bar">
-                      <span class="trap-type">DARK PATTERN #01: PRECHECKED CONSENT</span>
-                      <span class="trap-flag">&#9888; Checked by Default</span>
-                    </div>
-                    <label class="trap-checkbox-ui">
-                      <input type="checkbox" id="trap-check-box" checked />
-                      <span>Allow 120+ advertising partners to track browsing &amp; send daily promo SMS</span>
-                    </label>
-                  </div>
-
-                  <!-- Trap 3: Confirm-Shaming Refusal -->
-                  <div class="trap-item">
-                    <div class="trap-label-bar">
-                      <span class="trap-type">DARK PATTERN #02: CONFIRM-SHAMING</span>
-                      <span class="trap-flag">&#9888; Guilt Copy</span>
-                    </div>
-                    <div class="trap-shame-btn-wrap">
-                      <button type="button" class="btn btn-primary btn-sm" disabled>Accept Premium Shield (Paid)</button>
-                      <button type="button" class="btn-shame-preview" id="fake-shame-btn">
-                        No thanks, I prefer having my passwords stolen
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="neutralize-bar">
-                  <button type="button" class="btn-neutralize" id="btn-neutralize-demo">
-                    <span class="n-shield">&#128737;&#65039;</span>
-                    <span>Neutralize with NudgeKavach</span>
-                  </button>
-                  <span class="neutralize-note" id="neutralize-note">Click to uncheck add-on and neutralize guilt copy</span>
-                </div>
-              </div>
-
-              <!-- Footer Notice -->
-              <div class="card-footer-notice">
-                <span class="sec-dot"></span>
-                <span>Protected by NudgeKavach Client-Side In-Memory Engine. Zero telemetry logged.</span>
-              </div>
-            </div>
+          <section class="surface setup-card" id="desktop" aria-labelledby="desktop-setup">
+            <div class="eyebrow">02 / WINDOWS</div>
+            <h2 id="desktop-setup">Move the evidence, not the page</h2>
+            <p>
+              Run NudgeKavach Desktop using the development or Windows build instructions in the
+              repository README.
+            </p>
+            <ol>
+              <li>
+                In the browser panel, choose <strong>Export JSON</strong> to save NudgeProof. Keep
+                the downloaded JSON file.
+              </li>
+              <li>
+                Open the Windows <strong>Audit Workspace</strong> and choose
+                <strong>Import Audit Report</strong>.
+              </li>
+              <li>
+                Select that same file. Open an imported finding and match its ID and evidence with
+                the browser.
+              </li>
+              <li>
+                Export a separate Clean Control audit and import it for a
+                <strong>Controlled Comparison</strong>.
+              </li>
+            </ol>
+            <p class="setup-note">
+              This webpage cannot launch or inspect the Windows app. Open it locally; report
+              transfer is a file import.
+            </p>
           </section>
         </div>
-      </main>
-
-      <!-- Biometric Modal Simulation -->
-      <div class="biometric-modal-backdrop" id="biometric-modal" hidden>
-        <div class="biometric-modal-card">
-          <div class="fingerprint-scan-anim">
-            <svg viewBox="0 0 24 24" fill="none" class="fp-svg" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12c0 3.31 1.61 6.24 4.09 8.04.4.29.96.19 1.25-.21.29-.4.19-.96-.21-1.25C4.94 16.94 3.6 14.59 3.6 12c0-4.63 3.77-8.4 8.4-8.4s8.4 3.77 8.4 8.4c0 2.59-1.34 4.94-3.53 6.58-.4.29-.5.85-.21 1.25.29.4.85.5 1.25.21C20.39 18.24 22 15.31 22 12c0-5.52-4.48-10-10-10Z" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M12 6a6 6 0 0 0-6 6c0 1.93.91 3.65 2.33 4.75.39.3.95.23 1.25-.16.3-.39.23-.95-.16-1.25A4.39 4.39 0 0 1 7.6 12c0-2.43 1.97-4.4 4.4-4.4s4.4 1.97 4.4 4.4c0 1.26-.53 2.4-1.38 3.2-.38.35-.4 1-.05 1.38.35.38 1 .4 1.38.05A6.01 6.01 0 0 0 18 12a6 6 0 0 0-6-6Z" stroke="currentColor" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="2" fill="currentColor"/>
-            </svg>
-            <div class="scan-laser-beam"></div>
-          </div>
-          <h3>Touch ID / Security Key Required</h3>
-          <p>Scan your fingerprint or insert your FIDO2 hardware token to authenticate.</p>
-          <div class="bio-status" id="bio-status-msg">Scanning biometric hardware...</div>
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-cancel-bio">Cancel</button>
-        </div>
+        <aside class="setup-stack">
+          <section class="surface setup-card">
+            <div class="eyebrow">HANDOFF STATUS</div>
+            <h2>File import workflow</h2>
+            <div class="status-block">
+              <i aria-hidden="true"></i>Browser Extension Not Connected
+            </div>
+            <p>
+              No live bridge runs between this page and the Windows companion. Use an exported
+              NudgeProof file to bring your actual observations into the workspace.
+            </p>
+            <p>No credentials or biometric information are requested.</p>
+          </section>
+          <section class="surface setup-card">
+            <div class="eyebrow">PRESENT WITH CONFIDENCE</div>
+            <h2>One repeatable walkthrough</h2>
+            <p>
+              The Jury Console guides twelve manual steps, from the pattern store to a comparison in
+              Windows.
+            </p>
+            <a class="button" href="guide.html">Open Jury Console ↗</a>
+          </section>
+          <section class="surface setup-card">
+            <div class="eyebrow">LOCAL AUDIT WORKSPACE</div>
+            <p>
+              Reports may include observed page text. Review evidence before sharing it. The scanner
+              does not upload page content or require a remote classifier.
+            </p>
+            <a
+              class="inline-link"
+              href="https://github.com/kartikvermagit-ds/NudgeKavach#readme"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Read setup and limitations ↗</a
+            >
+          </section>
+        </aside>
       </div>
-
-      <!-- Success Toast Notification -->
-      <div class="auth-toast" id="auth-toast" hidden>
-        <span class="toast-ico">&#10003;</span>
-        <div class="toast-content">
-          <strong>Enclave Session Established</strong>
-          <span>Redirecting to compliance dashboard...</span>
-        </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>NudgeKavach · Evidence before judgement.</p>
+        <small>CHROME / MICROSOFT EDGE / WINDOWS</small>
       </div>
-    </div>
-
-    <script src="login.js"></script>
+    </footer>
   </body>
 </html>

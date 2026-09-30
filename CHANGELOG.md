@@ -2,7 +2,16 @@
 
 This file records user-visible changes. Version numbers describe the project; they do not imply that a Chrome Web Store release has been published.
 
-## Unreleased — UI/UX refresh
+## 0.2.0 — 2026-09-29
+
+- Added an import-first Windows Audit Workspace: local sessions, evidence library, forensic inspector, controlled comparison, reports and JSON export.
+- Added shared NudgeProof v2 validation, stable session/finding IDs, cautious before/after presentation and factual observed-charge summaries, with legacy report support.
+- Added compact browser findings, Choice Journey, factual impact and a clearly disabled Protect Mode Pro preview.
+- Unified popup, web product pages, lab navigation and a 12-step jury demonstration; replaced simulated authentication with an account-free setup flow.
+- Retained all five deterministic detector families and recent ARIA/currency/opacity improvements; corrected opacity-triggered evidence to disclose the measured CSS values.
+- Added desktop source/package instructions, Chrome/Edge setup, report/library tests and actual Electron import/export checks. Portable desktop builds remain unsigned and ignored by Git.
+
+## Earlier UI/UX refresh
 
 - Refined the Field storefront and guide with product hierarchy, demo ratings, shipping information and responsive layouts.
 - Redesigned the launcher, audit panel, popup, evidence cards and numbered source markers using the existing forest/lime/amber palette.

@@ -12,9 +12,9 @@ Text is whitespace-normalized and limited to 240 characters. Eligible changes ar
 
 **Finding type:** `prechecked` · **Category:** `Observed state`
 
-The first visible observation of a native checkbox is eligible when all of these conditions hold:
+The first visible observation of a native checkbox or basic `[role="checkbox"]` element is eligible when all of these conditions hold:
 
-- Its live `checked` property is true.
+- Its live `checked` property is true; a basic ARIA widget uses `aria-checked="true"` or a `checked` class.
 - It is not marked `required`.
 - Its label contains an optional-choice phrase: optional, add-on, protection plan, gift wrap, newsletter, promotional emails or shipping insurance.
 - No trusted pointer or keyboard interaction with that control or its associated label has been observed since monitoring began.
@@ -25,33 +25,34 @@ Labels come from associated labels, `aria-label`, or parent text. The first obse
 
 **Control case:** the clean store starts unchecked. Selecting its plan during monitoring should not create this finding.
 
-**Limits:** a saved preference or interaction before scanning may explain the state. Custom checkbox widgets are unsupported. A programmatic check after an unchecked first observation is not covered by this first-observation rule.
+**Limits:** a saved preference or interaction before scanning may explain the state. Custom widgets without the covered role/state conventions remain unsupported. A programmatic check after an unchecked first observation is not covered by this first-observation rule.
 
 ## 2. Unequal choice prominence
 
-**Finding type:** `prominence` · **Category:** `Heuristic`
+**Finding type:** `prominence` · **Display category:** `MEASURED UI` (legacy `confidence: "Heuristic"` is preserved)
 
 The scanner looks for visible buttons, links, role-buttons and button/submit inputs with narrowly matched Accept and Reject/Decline labels. It searches up to three nearby ancestor containers for the paired choice and stops before the document body.
 
-It compares bounding-rectangle area and computed font size:
+It compares bounding-rectangle area, computed font size and the controls' own computed opacity:
 
 ```text
 area ratio = Accept area / max(1, Reject area)
 font ratio = Accept font size / max(1, Reject font size)
 flag when area ratio >= 2.5 OR font ratio >= 1.5
+  OR Reject opacity <= 0.5 AND Accept opacity >= 0.85
 ```
 
-**NudgeProof:** the exact choice labels, both ratios and the thresholds.
+**NudgeProof:** the exact choice labels, both ratios, computed opacity values and the thresholds. An opacity-only match explicitly describes opacity rather than falsely claiming a size difference.
 
 **Control case:** equally sized Accept/Reject buttons with equal font sizes in the clean comparison.
 
-**Limits:** geometry does not measure contrast, wording quality, accessibility, focus order or intent. An unrelated nearby control can be paired in a complex layout. Localized labels and custom consent wording may be missed. The highlighted source is the Accept element; the evidence names its paired Reject choice.
+**Limits:** these measurements do not establish effective contrast, wording quality, accessibility, focus order or intent. Direct opacity excludes ancestor opacity. An unrelated nearby control can be paired in a complex layout. Localized labels and custom consent wording may be missed. The highlighted source is the Accept element; the evidence names its paired Reject choice.
 
 ## 3. Suspicious countdown reset
 
 **Finding type:** `urgency` · **Category:** `Observed behavior`
 
-Eligible leaf text elements contain an `MM:SS` or `HH:MM:SS` value and nearby urgency wording, such as offer, sale, deal, ends, expires, hurry, limited, left or remaining. The scanner stores timer history by element identity.
+Eligible leaf text elements contain an `MM:SS`, `HH:MM:SS`, or covered textual hours/minutes/seconds value (such as `12m 30s`) and nearby urgency wording. The scanner stores timer history by element identity.
 
 It flags a value increase greater than two seconds only after observing at least two descending samples for that element. A single snapshot or an ordinary countdown is insufficient.
 
@@ -67,8 +68,8 @@ It flags a value increase greater than two seconds only after observing at least
 
 The first scan collects a baseline of visible matching fee strings. Later scans flag a matching fee string that was absent from that baseline. Matching requires both:
 
-- English fee/charge terminology: service, handling, processing, platform, booking, convenience, delivery or shipping followed by fee or charge.
-- A supported currency marker (`₹`, `$`, `€`, `£`, `INR` or `USD`) followed by a number in the same leaf text element.
+- English terminology from the rule's service/handling/processing/platform/booking/convenience/delivery/shipping/packaging/cancellation/regulatory list, followed by fee, charge or cost.
+- A supported currency marker (`₹`, `$`, `€`, `£`, `¥`, `AED`, `CAD`, `AUD`, `USD`, `INR`, `GBP`, `EUR`, `Rs` or `Rs.`) followed by a number in the same leaf text element.
 
 **NudgeProof example:** “Not visible in the initial fee baseline; now visible: ‘Platform fee: ₹149’,” plus elapsed time since monitoring began.
 
@@ -92,6 +93,6 @@ The scanner checks visible choice labels for narrow English guilt or negative-se
 
 Evidence categories distinguish an observed state, change, behavior and a heuristic interpretation. The exported property is currently named `confidence`, but the values are not probabilities.
 
-The timeline records monitor start, timer baselines, new findings, countdown jumps, pause/resume and same-document URL changes. It is a selective event log, not a recording of every DOM mutation. It retains up to 120 events; the panel shows the latest 30. The report retains up to eight evidence snippets per finding.
+The timeline records monitor start, timer baselines, new findings, countdown jumps, pause/resume and same-document URL changes. It is a selective event log, not a recording of every DOM mutation. It retains and displays up to 120 events, oldest to newest. The report retains up to eight evidence snippets per finding. Shared report IDs link these observations across browser and desktop without adding events; see [NudgeProof](nudgeproof.md).
 
 The five controlled findings and clean control establish a repeatable demonstration, not a benchmark of web-wide accuracy. Add representative positive and negative fixtures before broadening a detector's claim.

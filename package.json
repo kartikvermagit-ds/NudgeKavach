@@ -1,10 +1,10 @@
 {
   "name": "nudgekavach",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Evidence-first, local dark-pattern auditor and controlled demo",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "repository": {
     "type": "git",
@@ -15,11 +15,16 @@
     "dev": "node --watch backend/server.cjs",
     "test": "node --test tests/unit/*.test.cjs",
     "test:browser": "node tests/integration/browser.cjs",
+    "test:desktop": "node tests/integration/desktop.cjs",
+    "desktop:install": "npm ci --prefix desktop && node desktop/node_modules/electron/install.js",
+    "desktop:dev": "npm start --prefix desktop",
+    "desktop:build": "node scripts/build-desktop.cjs",
     "check": "node scripts/check.cjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "@electron/packager": "20.3.0",
     "playwright": "1.62.1",
     "prettier": "3.9.9"
   }

@@ -4,7 +4,7 @@ Keep each change easy to demonstrate and explain. Detection changes need observa
 
 ## Local setup
 
-Use Node.js 22 or later and Chrome for manual extension testing.
+Use Node.js 22.12 or later and Chrome or Microsoft Edge for manual extension testing.
 
 ```sh
 git clone https://github.com/kartikvermagit-ds/NudgeKavach.git
@@ -50,6 +50,8 @@ npm run check
 npm test
 npx playwright install chromium
 npm run test:browser
+npm run desktop:install
+npm run test:desktop
 ```
 
 The browser tests select an available local port and load the unpacked extension. They write `test-results/demo-preview.png` and `test-results/nudgeproof.json`; these generated outputs are ignored by Git. Update committed fixtures or documentation images only intentionally. The GitHub Actions workflow runs the syntax checks, unit checks and browser checks on Node.js 22.
@@ -57,6 +59,8 @@ The browser tests select an available local port and load the unpacked extension
 Before a presentation, also check the installed Chrome toolbar, all five findings, JSON export, keyboard operation and the clean comparison. See [the demo script](docs/demo-script.md). A browser test pass does not measure web-wide precision or recall.
 
 ## Code and evidence standards
+
+Desktop source belongs in `desktop/`; the shared browser/desktop evidence contract belongs in `extension/report.js` so the MV3 folder stays independently installable. Preserve the original observation strings and IDs when changing presentation. See [NudgeProof schema and impact rules](docs/nudgeproof.md). Windows packaging uses `npm run desktop:build`; never commit `dist/`, user-data libraries or browser reports from real sites.
 
 - Use plain JavaScript and browser/Node APIs already in the project unless a dependency has a concrete benefit.
 - Keep thresholds and phrase rules transparent and testable. Keep DOM-specific behavior in the content script.

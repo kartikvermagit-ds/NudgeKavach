@@ -2,8 +2,8 @@
   color-scheme: dark;
   --surface: #10221f;
   --card: #1b332d;
-  --text: #eef6ef;
-  --muted: #b2c7bc;
+  --text: #f2f4ee;
+  --muted: #a7b7af;
   --lime: #c7f36b;
   --amber: #ed942f;
   --line: #355147;
@@ -46,7 +46,6 @@ svg {
   border-radius: 12px;
   background: #0d2319;
   overflow: hidden;
-  box-shadow: 0 0 12px rgba(199, 243, 107, 0.2);
 }
 .popup-logo-img {
   width: 100%;
@@ -63,8 +62,8 @@ h1 {
 }
 .brand p {
   color: var(--muted);
-  font-size: 8px;
-  letter-spacing: 1.1px;
+  font-size: 9px;
+  letter-spacing: 0;
   margin: 3px 0 0;
 }
 .version {

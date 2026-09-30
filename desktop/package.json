@@ -1,0 +1,15 @@
+{
+  "name": "nudgekavach-desktop",
+  "productName": "NudgeKavach Desktop",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Local NudgeProof audit workspace for Windows",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build": "node ../scripts/build-desktop.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.4.5"
+  }
+}

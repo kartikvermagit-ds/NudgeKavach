@@ -1,0 +1,391 @@
+.console-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+  padding: 64px 0 48px;
+}
+.console-hero h1 {
+  font-size: clamp(45px, 5.8vw, 77px);
+  line-height: 1.07;
+  letter-spacing: -3px;
+}
+.console-hero h1 span {
+  color: var(--lime);
+}
+.console-hero > div > p {
+  max-width: 510px;
+  font-size: 14px;
+}
+.console-intro {
+  border-left: 1px solid var(--line);
+  padding-left: 42px;
+}
+.console-intro h2 {
+  font-size: 32px;
+  margin: 19px 0 14px;
+}
+.console-intro p {
+  font-size: 13px;
+}
+.console-intro .actions {
+  gap: 10px;
+}
+.console-intro .button {
+  font-size: 11px;
+  padding: 12px 15px;
+}
+.console-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 35px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+.runbook {
+  min-width: 0;
+  scroll-margin-top: 25px;
+}
+.audit-stage {
+  margin-bottom: 42px;
+}
+.stage-heading {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.stage-heading .eyebrow {
+  font-size: 9px;
+  margin-bottom: 6px;
+}
+.stage-heading h2 {
+  font-size: 25px;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+.stage-number {
+  font:
+    12px Consolas,
+    monospace;
+  color: var(--lime);
+  padding: 14px 11px;
+  border: 1px solid #4d6347;
+  border-radius: 6px;
+}
+.stage-cue {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+.audit-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.audit-steps li + li {
+  border-top: 1px solid var(--line);
+}
+.audit-steps label {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 23px 21px;
+  cursor: pointer;
+  transition: background 160ms;
+}
+.audit-steps label:hover {
+  background: #1e372e;
+}
+.audit-steps input {
+  width: 17px;
+  height: 17px;
+  margin: 3px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--lime);
+  cursor: pointer;
+}
+.step-number {
+  font:
+    12px Consolas,
+    monospace;
+  color: var(--orange);
+  padding-top: 4px;
+}
+.audit-steps strong {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 7px;
+}
+.audit-steps label > span:last-child > span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.audit-steps li.completed label {
+  background: #203728;
+}
+.audit-steps li.completed .step-number {
+  color: var(--lime);
+}
+.presenter-notes {
+  align-self: start;
+  position: sticky;
+  top: 22px;
+}
+.progress-card,
+.notes-card {
+  border: 1px solid var(--line);
+  padding: 23px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  background: var(--surface);
+}
+.progress-card {
+  border-color: #567347;
+  background: #203224;
+}
+.progress-card .eyebrow,
+.notes-card .eyebrow {
+  font-size: 9px;
+  margin-bottom: 17px;
+}
+.progress-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.progress-heading strong {
+  font-size: 31px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.progress-heading span {
+  font-size: 10px;
+  color: var(--muted);
+}
+progress {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border: 0;
+  border-radius: 5px;
+  margin: 18px 0 13px;
+  background: #345048;
+  color: var(--lime);
+  accent-color: var(--lime);
+}
+progress::-webkit-progress-bar {
+  background: #345048;
+  border-radius: 5px;
+}
+progress::-webkit-progress-value {
+  background: var(--lime);
+  border-radius: 5px;
+}
+progress::-moz-progress-bar {
+  background: var(--lime);
+  border-radius: 5px;
+}
+.progress-card > p {
+  font-size: 12px;
+  margin-bottom: 16px;
+  min-height: 40px;
+}
+.progress-card .button {
+  padding: 10px 14px;
+}
+.progress-card p.small-note {
+  min-height: 0;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+.notes-card ul {
+  padding-left: 17px;
+  margin: 0 0 17px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.75;
+}
+.notes-card li + li {
+  margin-top: 10px;
+}
+.notes-card a {
+  font-size: 11px;
+}
+.notes-card p {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+.notes-card p strong {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+}
+.notes-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+.recovery {
+  padding: 15px 5px;
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+}
+.recovery summary {
+  cursor: pointer;
+  color: var(--lime);
+  font-weight: 500;
+}
+.recovery p {
+  font-size: 11px;
+  margin: 15px 0 0;
+}
+.closing-note {
+  border-block: 1px solid var(--line);
+  padding: 42px 0;
+  margin: 0 0 42px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0 40px;
+}
+.closing-note .eyebrow {
+  grid-column: 1/-1;
+  margin-bottom: 17px;
+}
+.closing-note h2 {
+  font-size: 32px;
+  margin: 0;
+}
+.closing-note p {
+  font-size: 13px;
+  margin: 0;
+  align-self: center;
+}
+@media (max-width: 1050px) {
+  .console-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 25px;
+  }
+  .console-hero {
+    gap: 35px;
+  }
+  .console-intro {
+    padding-left: 28px;
+  }
+  .stage-cue {
+    display: none;
+  }
+  .audit-steps label {
+    padding: 21px 16px;
+    gap: 11px;
+  }
+  .progress-card,
+  .notes-card {
+    padding: 20px;
+  }
+}
+@media (max-width: 750px) {
+  .console-hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 0 30px;
+  }
+  .console-hero h1 {
+    font-size: 55px;
+    letter-spacing: -2.5px;
+  }
+  .console-intro {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 26px 0 0;
+  }
+  .console-intro h2 {
+    font-size: 27px;
+  }
+  .console-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 30px;
+  }
+  .presenter-notes {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    order: -1;
+  }
+  .notes-card,
+  .recovery {
+    display: none;
+  }
+  .progress-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 14px;
+  }
+  .progress-card .eyebrow,
+  .progress-card progress,
+  .progress-card .small-note {
+    grid-column: 1/-1;
+  }
+  .progress-card .eyebrow {
+    margin-bottom: 12px;
+  }
+  .progress-card #progress-status {
+    grid-column: 1/-1;
+    min-height: 0;
+    margin: 0 0 13px;
+  }
+  .progress-card .button {
+    grid-row: 2;
+    grid-column: 2;
+    align-self: center;
+  }
+  .progress-heading strong {
+    font-size: 26px;
+  }
+  .progress-heading span {
+    font-size: 9px;
+  }
+  .runbook {
+    margin-top: 15px;
+  }
+  .closing-note {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 0;
+  }
+  .closing-note h2 {
+    font-size: 28px;
+  }
+  .closing-note .eyebrow {
+    margin: 0;
+  }
+  .stage-heading h2 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 370px) {
+  .console-hero h1 {
+    font-size: 46px;
+  }
+  .progress-heading {
+    gap: 7px;
+  }
+  .progress-heading span {
+    max-width: 60px;
+  }
+  .audit-steps label {
+    gap: 9px;
+    padding: 19px 13px;
+  }
+}

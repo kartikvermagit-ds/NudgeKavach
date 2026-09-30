@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 let count = 0;
 function inspect(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (['node_modules', 'dist', '.cache'].includes(entry.name)) continue;
     const file = path.join(directory, entry.name);
     if (entry.isDirectory()) inspect(file);
     else if (/\.(c?js)$/.test(entry.name)) {
@@ -15,7 +16,7 @@ function inspect(directory) {
     }
   }
 }
-for (const directory of ['backend', 'extension', 'frontend', 'scripts', 'tests'])
+for (const directory of ['backend', 'extension', 'frontend', 'desktop', 'scripts', 'tests'])
   inspect(path.join(root, directory));
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'extension/manifest.json')));
 if (manifest.manifest_version !== 3) throw new Error('Expected a Manifest V3 extension');

@@ -3,3 +3,7 @@ test-results/
 playwright-report/
 coverage/
 package-lock.json
+desktop/node_modules/
+desktop/package-lock.json
+dist/
+.desktop-stage/

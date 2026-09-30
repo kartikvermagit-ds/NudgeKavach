@@ -47,7 +47,7 @@ function createServer() {
     if (pathname === '/health') {
       send(
         200,
-        JSON.stringify({ status: 'ok', service: 'nudgekavach-demo', version: '0.1.0' }),
+        JSON.stringify({ status: 'ok', service: 'nudgekavach-demo', version: '0.2.0' }),
         'application/json; charset=utf-8',
       );
       return;

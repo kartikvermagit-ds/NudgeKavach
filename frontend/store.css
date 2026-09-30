@@ -79,6 +79,68 @@ svg {
 .demo-bar > :last-child {
   opacity: 0.88;
 }
+.lab-bar {
+  background: #10221f;
+  min-height: 62px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.lab-bar .lab-brand {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  letter-spacing: 0;
+}
+.lab-brand img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+.lab-brand b {
+  display: block;
+  color: #c7f36b;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+}
+.lab-brand small {
+  display: block;
+  color: #d0dbd0;
+  margin-top: 4px;
+  font-size: 10px;
+}
+.lab-bar .lab-controls {
+  display: flex;
+  gap: 5px;
+  opacity: 1;
+  flex-wrap: wrap;
+}
+.lab-controls a,
+.lab-controls button {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 9px 11px;
+  font: inherit;
+  font-size: 10px;
+  color: #d0dbd0;
+  background: transparent;
+}
+.lab-controls a:hover,
+.lab-controls button:hover {
+  background: #284037;
+  color: #f2f4ee;
+}
+.lab-controls a[aria-current='page'] {
+  background: #c7f36b;
+  color: #10221f;
+}
+.lab-controls button {
+  border-color: #567264;
+  margin-left: 6px;
+}
+.lab-bar :focus-visible {
+  outline-color: #ed942f;
+}
 .store-header {
   min-height: 99px;
   margin: 0 auto;
@@ -1027,6 +1089,19 @@ footer > span {
   }
   .demo-bar > :last-child {
     font-size: 9px;
+  }
+  .lab-bar {
+    flex-direction: column;
+    padding: 12px 4%;
+    gap: 10px;
+  }
+  .lab-bar .lab-brand {
+    display: flex;
+    align-self: flex-start;
+  }
+  .lab-bar .lab-controls {
+    justify-content: flex-start;
+    width: 100%;
   }
   .store-header {
     min-height: 92px;

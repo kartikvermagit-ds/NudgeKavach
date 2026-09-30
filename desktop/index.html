@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>NudgeKavach Desktop — Audit Workspace</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../extension/report.js" defer></script>
+    <script src="renderer.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to audit workspace</a>
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="../extension/logo.png" alt="" />
+        <div><strong>NudgeKavach</strong><small>DESKTOP</small></div>
+      </div>
+      <p class="sidebar-label">AUDIT WORKSPACE</p>
+      <nav aria-label="Workspace sections">
+        <button type="button" data-view="overview" aria-current="page">
+          <span aria-hidden="true">◫</span>Overview
+        </button>
+        <button type="button" data-view="sessions">
+          <span aria-hidden="true">▤</span>Audit Sessions
+        </button>
+        <button type="button" data-view="evidence">
+          <span aria-hidden="true">▧</span>Evidence Library
+        </button>
+        <button type="button" data-view="reports"><span aria-hidden="true">▱</span>Reports</button>
+        <button type="button" data-view="settings">
+          <span aria-hidden="true">⚙</span>Settings
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="local-dot" aria-hidden="true"></span><strong>LOCAL AUDIT WORKSPACE</strong>
+        <p>Evidence before judgement.</p>
+        <small>CATALYST HACK 2026</small>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">NUDGEKAVACH</span>
+          <p>Audit Workspace</p>
+        </div>
+        <span class="connection"><i aria-hidden="true"></i>Browser Extension Not Connected</span
+        ><button class="primary" id="import-report" type="button">
+          <span aria-hidden="true">＋</span> Import Audit Report
+        </button>
+      </header>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <main id="main" tabindex="-1"></main>
+      <footer class="app-footer">
+        <span>LOCAL ANALYSIS • NO PAGE UPLOAD</span
+        ><span>Reports describe observations, not intent.</span>
+      </footer>
+    </div>
+  </body>
+</html>

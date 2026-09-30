@@ -8,21 +8,34 @@
     <link rel="icon" type="image/jpeg" href="logo.jpg" />
     <link rel="stylesheet" href="store.css" />
     <script src="store.js" defer></script>
+    <script src="lab.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#product">Skip to product</a>
-    <div class="demo-bar">
-      <span>THOUGHTFUL OBJECTS. EVERYDAY MOMENTS.</span>
-      <span>Controlled demonstration environment</span>
+    <div class="demo-bar lab-bar">
+      <a class="lab-brand" href="landing.html"
+        ><img src="logo.png" alt="" /><span
+          ><b>NUDGEKAVACH LAB</b><small>Controlled Demonstration Environment</small></span
+        ></a
+      >
+      <nav class="lab-controls" aria-label="Demonstration controls">
+        <a data-mode="pattern" href="?mode=tricky">Pattern Mode</a>
+        <a data-mode="clean" href="?mode=clean">Clean Control</a>
+        <button
+          type="button"
+          id="reset-demo"
+          title="Reload this mode and start a new audit baseline"
+        >
+          Reset Demo <span aria-hidden="true">↻</span>
+        </button>
+      </nav>
     </div>
     <header class="store-header">
       <a class="brand" href="/" aria-label="Field home">field<span>®</span></a>
       <nav aria-label="Store navigation">
-        <a class="pattern-link" href="?mode=tricky">Pattern store</a>
-        <a class="clean-link" href="?mode=clean">Clean comparison</a>
-        <a href="guide.html">Demo guide <span aria-hidden="true">↗</span></a>
-        <a href="landing.html" style="font-weight: 600">NudgeKavach Site <span aria-hidden="true">↗</span></a>
-        <a href="login.html" style="font-weight: 600; color: #1f5038;">Auditor Login <span aria-hidden="true">↗</span></a>
+        <a href="guide.html">Jury Console <span aria-hidden="true">↗</span></a>
+        <a href="landing.html">About NudgeKavach</a>
+        <a href="login.html">Get started</a>
       </nav>
       <a class="bag" href="#checkout-summary" aria-label="View bag, one product">
         <svg viewBox="0 0 24 24" aria-hidden="true">

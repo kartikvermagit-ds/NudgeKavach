@@ -5,6 +5,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const os = require('node:os');
 const { createServer } = require('../../backend/server.cjs');
+const Proof = require('../../extension/report.js');
 const root = path.resolve(__dirname, '../..');
 const results = path.join(root, 'test-results');
 fs.mkdirSync(results, { recursive: true });
@@ -29,7 +30,7 @@ async function until(fn, timeout = 6000) {
   const origin = `http://127.0.0.1:${server.address().port}`;
   context = await chromium.launchPersistentContext(profile, {
     headless: true,
-    channel: 'chromium',
+    channel: process.env.NUDGE_BROWSER_CHANNEL || 'chromium',
     viewport: { width: 1440, height: 1100 },
     args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`],
     acceptDownloads: true,
@@ -83,6 +84,10 @@ async function until(fn, timeout = 6000) {
   await until(async () => (await report()).findings.some((f) => f.type === 'urgency'), 18000);
   result = await report();
   assert.equal(result.findings.length, 5);
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(new Set(result.findings.map((f) => f.findingId)).size, 5);
+  assert.equal(Proof.impact(result).money[0].total, 548);
+  assert.ok(result.timeline.some((e) => e.findingId && e.evidence));
   assert.ok(result.findings.every((f) => f.evidence.length && f.interpretation && f.confidence));
   assert.ok(result.timeline.some((e) => /Countdown jumped/.test(e.message)));
   // Duplicate content injection must preserve one monitor and the existing evidence.
@@ -147,7 +152,7 @@ async function until(fn, timeout = 6000) {
   assert.deepEqual(ui.counts, ['5', '5']);
   assert.deepEqual(
     ui.categories,
-    result.findings.map((f) => f.confidence),
+    result.findings.map((f) => f.evidenceCategory),
   );
   assert.deepEqual(
     ui.interpretation,
@@ -191,12 +196,13 @@ async function until(fn, timeout = 6000) {
   await evaluate(
     'globalThis.__nkOriginalWrite = navigator.clipboard.writeText; navigator.clipboard.writeText = async text => { globalThis.__nkCopied = text; }',
   );
-  await panelButton('Copy evidence');
+  await panelButton('Details');
+  await panelButton('Copy Evidence');
   await until(async () =>
     (await evaluate('globalThis.__nkCopied'))?.includes(result.findings[0].interpretation),
   );
   await evaluate("navigator.clipboard.writeText = async () => { throw new Error('Unavailable'); }");
-  await panelButton('Copy evidence');
+  await panelButton('Copy Evidence');
   await until(async () =>
     panelEvaluate(function () {
       return !this.querySelector('.copy-fallback').hidden;
@@ -217,6 +223,11 @@ async function until(fn, timeout = 6000) {
   const download = await downloaded;
   const downloadedReport = JSON.parse(fs.readFileSync(await download.path(), 'utf8'));
   assert.equal(downloadedReport.findings.length, 5);
+  assert.equal(downloadedReport.sessionId, result.sessionId);
+  assert.deepEqual(
+    downloadedReport.findings.map((f) => f.findingId),
+    result.findings.map((f) => f.findingId),
+  );
   assert.ok(!downloadedReport.page.includes('?'));
   await panelButton('Pause');
   assert.equal((await report()).monitoring, false);
@@ -234,6 +245,23 @@ async function until(fn, timeout = 6000) {
     this.getElementById('close').focus({ preventScroll: true });
   });
   await page.screenshot({ path: path.join(results, 'demo-preview.png'), fullPage: true });
+  await panelButton('View in Journey');
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.getElementById('view-journey').hidden;
+    }),
+    false,
+  );
+  await page.screenshot({ path: path.join(results, 'timeline-audit.png') });
+  await panelButton('PROTECT');
+  assert.equal(
+    await panelEvaluate(function () {
+      return this.getElementById('view-protect').querySelector('button').disabled;
+    }),
+    true,
+  );
+  await page.screenshot({ path: path.join(results, 'protect-preview.png') });
+  await panelButton('FINDINGS');
   await panelEvaluate(function () {
     this.querySelector('details').scrollIntoView({ block: 'end', behavior: 'instant' });
   });
@@ -261,7 +289,10 @@ async function until(fn, timeout = 6000) {
   );
   await page.screenshot({ path: path.join(results, 'mobile-store.png'), fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1100 });
-  fs.writeFileSync(path.join(results, 'nudgeproof.json'), JSON.stringify(result, null, 2));
+  fs.writeFileSync(
+    path.join(results, 'nudgeproof.json'),
+    JSON.stringify(downloadedReport, null, 2),
+  );
   console.log(
     'PASS: real MV3 auto-load, five findings, evidence, reset timeline, export download, pause/resume, panel screenshot',
   );
@@ -291,6 +322,16 @@ async function until(fn, timeout = 6000) {
   await page.waitForTimeout(1800);
   assert.equal((await report()).findings.length, 0);
   console.log('PASS: clean baseline, upfront fee, user-selected add-on and equal choices');
+  const cleanDownload = page.waitForEvent('download');
+  await panelButton('Export JSON');
+  const cleanFile = await cleanDownload;
+  const cleanReport = JSON.parse(fs.readFileSync(await cleanFile.path(), 'utf8'));
+  assert.equal(cleanReport.findings.length, 0);
+  assert.notEqual(cleanReport.sessionId, downloadedReport.sessionId);
+  fs.writeFileSync(
+    path.join(results, 'nudgeproof-clean.json'),
+    JSON.stringify(cleanReport, null, 2),
+  );
   // Dynamic optional defaults, ordinary clocks, neutral refusal and hidden fee text.
   await page.evaluate(() => {
     const label = document.createElement('label');
@@ -338,6 +379,33 @@ async function until(fn, timeout = 6000) {
   });
   assert.equal((await report()).findings.length, 1);
   assert.equal(await popup.locator('body').getAttribute('data-state'), 'active');
+  // The inherited opacity rule must report opacity when the geometry is equal.
+  await page.evaluate(() => {
+    const group = document.createElement('section');
+    for (const label of ['Accept all', 'Reject optional']) {
+      const button = document.createElement('button');
+      button.textContent = label;
+      button.style.cssText =
+        'width:180px;height:50px;font-size:16px;padding:10px;box-sizing:border-box';
+      if (label.startsWith('Reject')) button.style.opacity = '0.3';
+      group.append(button);
+    }
+    document.body.append(group);
+  });
+  await until(async () => (await report()).findings.some((f) => f.type === 'prominence'));
+  const opacityFinding = (await report()).findings.find((f) => f.type === 'prominence');
+  assert.match(opacityFinding.evidence[0], /computed opacity Accept 1\.00, Reject 0\.30/);
+  assert.match(opacityFinding.interpretation, /lower computed opacity/);
+  const sourcesBeforeRoute = (await report()).findings.map((f) => f.source);
+  await page.evaluate(() => history.pushState({}, '', '/checkout?private=value#step'));
+  await evaluate('globalThis.__nudgeKavach.scan()');
+  const afterRoute = await report();
+  assert.equal(afterRoute.page, origin + '/checkout');
+  assert.deepEqual(
+    afterRoute.findings.map((f) => f.source),
+    sourcesBeforeRoute,
+  );
+  assert.ok(afterRoute.timeline.some((e) => e.eventType === 'route-change'));
   const guide = await context.newPage();
   await guide.goto(origin + '/guide.html');
   await guide.screenshot({ path: path.join(results, 'guide-desktop.png'), fullPage: true });
@@ -347,6 +415,18 @@ async function until(fn, timeout = 6000) {
     false,
   );
   await guide.screenshot({ path: path.join(results, 'guide-mobile.png'), fullPage: true });
+  for (const route of ['landing', 'login']) {
+    await guide.setViewportSize({ width: 1440, height: 1000 });
+    await guide.goto(`${origin}/${route}.html`);
+    assert.match(await guide.locator('body').innerText(), /NudgeKavach/);
+    await guide.screenshot({ path: path.join(results, `${route}-desktop.png`), fullPage: true });
+    await guide.setViewportSize({ width: 390, height: 844 });
+    assert.equal(
+      await guide.evaluate(() => document.documentElement.scrollWidth > innerWidth),
+      false,
+    );
+    await guide.screenshot({ path: path.join(results, `${route}-mobile.png`), fullPage: true });
+  }
   assert.deepEqual(errors, []);
   console.log(
     'PASS: popup CSP, restricted-page error, scripting, messaging, duplicate injection guard',

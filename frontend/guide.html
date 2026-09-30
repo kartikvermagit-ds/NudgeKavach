@@ -3,78 +3,333 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NudgeKavach / Demo guide</title>
-    <link rel="stylesheet" href="store.css" />
+    <meta name="theme-color" content="#0c1816" />
+    <meta
+      name="description"
+      content="A presenter-controlled walkthrough of a real NudgeKavach browser audit, NudgeProof export, and local Windows review."
+    />
+    <title>NudgeKavach / 90-second live audit</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="guide.css" />
+    <script src="guide.js" defer></script>
   </head>
-  <body class="guide-page">
+  <body>
     <a class="skip-link" href="#walkthrough">Skip to walkthrough</a>
-    <div class="demo-bar">
-      <span>CATALYST HACK 2026 / DIGITAL TRUST</span
-      ><span>Controlled demonstration environment</span>
-    </div>
-    <header class="store-header">
-      <a class="brand guide-brand" href="/">NudgeKavach<span>◈</span></a>
-      <div>
-        <a href="/">Open store ↗</a>
-        <a href="landing.html" style="margin-left: 16px; font-weight: 600">Product Website ↗</a>
+    <header class="masthead">
+      <div class="container">
+        <a class="brand" href="landing.html"
+          ><img src="logo.png" alt="" /><span
+            >NudgeKavach<small>INTERFACE MANIPULATION AUDITOR</small></span
+          ></a
+        >
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="landing.html">Product</a><a href="guide.html" aria-current="page">Jury Console</a
+          ><a class="button" href="login.html">Setup guide <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
     </header>
-    <main class="guide-main">
-      <div class="eyebrow">SEE THE MANIPULATION BEFORE YOU CLICK.</div>
-      <h1>Don’t just flag it.<br />Show the evidence.</h1>
-      <p class="guide-intro">
-        A 90-second walkthrough of evidence-first auditing. Load the extension, then open the
-        pattern store in a fresh tab.
-      </p>
-      <ol class="walkthrough" id="walkthrough" aria-label="Demo walkthrough">
-        <li>
-          Click the green NudgeKavach launcher. Expect three initial observations: optional add-on,
-          unequal cookie choices, and confirm-shaming.
-        </li>
-        <li>
-          Click “Continue to checkout”. A ₹149 platform fee appears; NudgeProof records its late
-          disclosure.
-        </li>
-        <li>
-          Wait about 15 seconds. The countdown reaches zero, then returns to 12 seconds. The
-          timeline records the jump.
-        </li>
-        <li>
-          Use “Locate on page” to match a numbered source with its card. Read NudgeProof and its
-          limitation, then use “Copy evidence” or “Export JSON”.
-        </li>
-        <li>
-          Open the clean comparison. Expect zero findings; choose the add-on yourself and continue
-          to checkout. These actions should not add findings.
-        </li>
-      </ol>
-      <section class="guide-notes" aria-label="Understanding the demonstration">
+    <main class="container" id="main">
+      <section class="page-hero console-hero">
         <div>
-          <h2>What the proof means</h2>
+          <div class="eyebrow">NUDGEKAVACH / JURY DEMO CONSOLE</div>
+          <h1>90-SECOND<br /><span>LIVE AUDIT.</span></h1>
           <p>
-            Observations are local signals, not legal conclusions. A timer reset can have a valid
-            reason. A later fee can be a recalculation. An already-selected control can reflect a
-            saved preference.
+            From a choice on the page to an inspectable evidence trail. Twelve presenter-led steps.
+            One real NudgeProof report.
           </p>
         </div>
-        <div>
-          <h2>Reliable presentation</h2>
+        <div class="console-intro">
+          <span class="tag evidence">CONTROLLED DEMONSTRATION</span>
+          <h2>Evidence before<br />judgement.</h2>
           <p>
-            Keep the page in the foreground. Do not dismiss cookies before demonstrating the choice
-            imbalance. Reload to reset findings and timer state. The lab does not make purchases,
-            collect emails, or install tracking cookies.
+            Open the store in another tab. This checklist is your running order; it does not monitor
+            the browser or confirm that a finding occurred.
           </p>
+          <div class="actions">
+            <a class="button primary" href="index.html?mode=tricky" target="_blank" rel="noopener"
+              >Open Pattern Mode ↗</a
+            ><a class="button" href="index.html?mode=clean" target="_blank" rel="noopener"
+              >Clean Control ↗</a
+            >
+          </div>
         </div>
       </section>
-      <p class="guide-actions">
-        <a href="/?mode=tricky">PATTERN STORE ↗</a> &nbsp;
-        <a href="/?mode=clean">CLEAN COMPARISON ↗</a>
-      </p>
+      <div class="console-layout">
+        <div class="runbook" id="walkthrough">
+          <section class="audit-stage" aria-labelledby="observe-title">
+            <div class="stage-heading">
+              <span class="stage-number">01</span>
+              <div>
+                <div class="eyebrow">BROWSER / OBSERVE</div>
+                <h2 id="observe-title">Show the signal.</h2>
+              </div>
+              <span class="stage-cue">Suggested: 0–25s</span>
+            </div>
+            <ol class="audit-steps">
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">01</span
+                  ><span
+                    ><strong>Open Pattern Mode</strong
+                    ><span
+                      >Start with a fresh store page. Leave the cookie choices visible and keep this
+                      tab in the foreground.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">02</span
+                  ><span
+                    ><strong>Start the browser audit</strong
+                    ><span
+                      >Open the green NudgeKavach launcher. Local monitoring begins automatically on
+                      the demo; the toolbar can also start a scan.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">03</span
+                  ><span
+                    ><strong>Inspect the initial observations</strong
+                    ><span
+                      >Expect an optional pre-selection, unequal choice prominence and possible
+                      confirm-shaming. Expand Details to read each rule and limitation.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">04</span
+                  ><span
+                    ><strong>Locate the evidence</strong
+                    ><span
+                      >Select Locate Evidence. Match the orange source marker to its finding number;
+                      explain what was actually observed.</span
+                    ></span
+                  ></label
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="audit-stage" aria-labelledby="prove-title">
+            <div class="stage-heading">
+              <span class="stage-number">02</span>
+              <div>
+                <div class="eyebrow">NUDGEPROOF / EXPLAIN</div>
+                <h2 id="prove-title">Follow the change.</h2>
+              </div>
+              <span class="stage-cue">Suggested: 25–55s</span>
+            </div>
+            <ol class="audit-steps" start="5">
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">05</span
+                  ><span
+                    ><strong>Continue to checkout</strong
+                    ><span
+                      >Use the store’s checkout button. No real purchase is placed. Keep monitoring
+                      active during the transition.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">06</span
+                  ><span
+                    ><strong>Inspect the late-visible fee</strong
+                    ><span
+                      >A ₹149 platform fee appears after the visible baseline. Compare its captured
+                      before/after and timestamp. A later fee can be a recalculation.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">07</span
+                  ><span
+                    ><strong>Inspect the observed countdown reset</strong
+                    ><span
+                      >After about 15 seconds in the foreground, inspect the sampled countdown
+                      increase. The reset is observed; deceptive intent is not established.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">08</span
+                  ><span
+                    ><strong>Open CHOICE JOURNEY</strong
+                    ><span
+                      >Select JOURNEY. Follow actual timestamps, event types and linked finding
+                      numbers. This is observed session history, not a replay of every click.</span
+                    ></span
+                  ></label
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="audit-stage" aria-labelledby="review-title">
+            <div class="stage-heading">
+              <span class="stage-number">03</span>
+              <div>
+                <div class="eyebrow">WINDOWS / REVIEW</div>
+                <h2 id="review-title">Carry the proof.</h2>
+              </div>
+              <span class="stage-cue">Suggested: 55–90s</span>
+            </div>
+            <ol class="audit-steps" start="9">
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">09</span
+                  ><span
+                    ><strong>Export the NudgeProof report</strong
+                    ><span
+                      >Select Export JSON in the browser panel. The file carries the observed
+                      evidence, session ID and finding IDs. Sharing remains your choice.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">10</span
+                  ><span
+                    ><strong>Open Windows Audit Workspace</strong
+                    ><span
+                      >Switch to the desktop app started before the demo. Browser Extension Not
+                      Connected is correct: this workflow uses explicit file import.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">11</span
+                  ><span
+                    ><strong>Import the same report</strong
+                    ><span
+                      >Select Import Audit Report. Inspect one finding and match its ID, evidence
+                      and original timestamp to the browser session.</span
+                    ></span
+                  ></label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" data-step /><span class="step-number">12</span
+                  ><span
+                    ><strong>Compare with Clean Control</strong
+                    ><span
+                      >Export a separate clean audit and import it. Select Pattern and Clean reports
+                      in Controlled Comparison. Expect zero covered clean signals, not a guarantee
+                      of safety or fairness.</span
+                    ></span
+                  ></label
+                >
+              </li>
+            </ol>
+          </section>
+        </div>
+        <aside class="presenter-notes" aria-label="Presenter controls and notes">
+          <section class="progress-card">
+            <div class="eyebrow">PRESENTER CHECKLIST</div>
+            <div class="progress-heading">
+              <strong id="progress-count">0 / 12</strong><span>manually checked</span>
+            </div>
+            <progress
+              id="demo-progress"
+              max="12"
+              value="0"
+              aria-label="Manually completed walkthrough steps"
+            ></progress>
+            <p id="progress-status" role="status" aria-live="polite">
+              Ready when you are. Check each step yourself.
+            </p>
+            <button class="button" type="button" id="reset-checklist">Reset checklist</button>
+            <p class="small-note">
+              Resets these checkmarks only. Use Reset Demo in the store to begin a new observed
+              session.
+            </p>
+          </section>
+          <section class="notes-card">
+            <div class="eyebrow">BEFORE YOU PRESENT</div>
+            <ul>
+              <li>Load the extension in Chrome or Edge.</li>
+              <li>Start the local demo and Windows app.</li>
+              <li>Keep Pattern Mode foregrounded while its timer runs.</li>
+              <li>
+                Prepare a clearly labeled clean report for a brisk comparison, or allow extra time
+                to export one live.
+              </li>
+            </ul>
+            <a class="inline-link" href="login.html">Installation and workspace setup ↗</a>
+          </section>
+          <section class="notes-card expected">
+            <div class="eyebrow">FIXTURE EXPECTATIONS</div>
+            <p>
+              <strong>3 initial → 5 after both changes</strong><br />Pattern Mode has five covered
+              finding types after checkout and an observed reset.
+            </p>
+            <p>
+              <strong>0 covered findings</strong><br />Clean Control should remain clean after
+              manually selecting its plan and checking out.
+            </p>
+            <small
+              >These are expected fixture results, not live scan counts. Finding order and sampled
+              values can vary.</small
+            >
+          </section>
+          <details class="recovery">
+            <summary>If the demo needs recovery</summary>
+            <p>
+              Missing launcher? Reload the store after loading the extension. Fewer than five
+              findings? Continue to checkout, keep the tab foregrounded and wait for a reset.
+            </p>
+            <p>
+              Monitoring started late? Reset Demo to collect a fresh baseline. Paused activity is
+              unknown; resume before demonstrating changes.
+            </p>
+          </details>
+        </aside>
+      </div>
+      <section class="closing-note">
+        <div class="eyebrow">THE POINT OF THE DEMO</div>
+        <h2>DETECTION IS EASY.<br />EVIDENCE IS THE PRODUCT.</h2>
+        <p>
+          What happened? Where? What changed? What supports it? What remains uncertain? Show the
+          answer in the report, not just a warning label.
+        </p>
+      </section>
+      <section class="pro-banner" aria-labelledby="protect-title">
+        <div>
+          <div class="eyebrow">PROTECT MODE / COMING NEXT</div>
+          <h2 id="protect-title">Make This Page Fair.</h2>
+          <p>
+            Future direction: review optional charges and normalize choice presentation. Page
+            modification and Developer CI are not implemented.
+          </p>
+        </div>
+        <div class="pro-actions">
+          <button class="button" type="button" disabled>MAKE THIS PAGE FAIR</button
+          ><small>Coming in Pro</small>
+        </div>
+      </section>
     </main>
-    <footer>
-      <span>NUDGEKAVACH</span>
-      <p>Evidence, not a verdict.</p>
-      <span>ANALYSIS STAYS IN YOUR BROWSER</span>
+    <footer class="site-footer">
+      <div class="container">
+        <p>NudgeKavach · See the Manipulation Before You Click.</p>
+        <a href="landing.html">Product overview ↗</a
+        ><small>CATALYST HACK 2026 / CYBERSECURITY &amp; DIGITAL TRUST</small>
+      </div>
     </footer>
   </body>
 </html>

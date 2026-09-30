@@ -27,13 +27,13 @@ scanButton.addEventListener('click', async () => {
       setState(
         'unsupported',
         'Unsupported page',
-        'Open a regular HTTP/HTTPS page first. Chrome internal pages cannot be scanned.',
+        'Open a regular HTTP/HTTPS page first. Chrome / Edge internal pages cannot be scanned.',
       );
       return;
     }
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ['rules.js', 'content.js'],
+      files: ['rules.js', 'report.js', 'content.js'],
     });
     const result = await chrome.tabs.sendMessage(tab.id, { type: 'NK_OPEN' });
     if (!result?.ok)

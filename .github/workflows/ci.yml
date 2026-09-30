@@ -26,3 +26,23 @@ jobs:
           name: browser-test-results
           path: test-results/
           if-no-files-found: ignore
+  windows-workspace:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run desktop:install
+      - run: npx playwright install chromium
+      - run: npm run test:browser
+      - run: npm run test:desktop
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-workspace-results
+          path: test-results/
+          if-no-files-found: ignore

@@ -2,17 +2,17 @@
 
 **See the Manipulation Before You Click.**
 
-Catalyst Hack 2026 · Cybersecurity & Digital Trust · MVP v0.1
+Evidence-first interface manipulation auditing for the browser and desktop.
 
-NudgeKavach is a Chrome Manifest V3 extension that turns local page observations into **NudgeProof** evidence cards. The project includes a controlled e-commerce frontend, a local Node server, five deterministic detectors, and a clean comparison store.
+**BROWSER · Observe → NUDGEPROOF · Explain → WINDOWS · Review → PROTECT MODE · Future: Neutralize**
 
-No API key, account, remote AI, database, analytics, or runtime npm dependencies are needed. The backend serves the demo; the extension performs all detection locally.
+Catalyst Hack 2026 · Cybersecurity & Digital Trust · v0.2
 
-![NudgeKavach demo and evidence panel](docs/assets/demo-preview.png)
+The browser catches covered signals while they happen. NudgeProof explains what was observed and what remains uncertain. The Windows Audit Workspace reviews the same evidence trail. **Evidence before judgement.**
 
-## Quick start
+## Run the demo
 
-Requires Node.js 22+ and Chrome (or Chromium with extension support).
+Requires Node.js 22.12+ and Chrome or Microsoft Edge.
 
 ```sh
 git clone https://github.com/kartikvermagit-ds/NudgeKavach.git
@@ -20,122 +20,136 @@ cd NudgeKavach
 npm start
 ```
 
-1. Open **http://127.0.0.1:4173/** in Chrome.
-2. Open `chrome://extensions`, enable **Developer mode**, and choose **Load unpacked**.
-3. Select the repository's **extension/** folder containing `manifest.json`.
-4. Reload the store, then click the green **NudgeKavach** launcher.
-5. Click **Continue to checkout** and keep the tab visible for about **15 seconds**. All five findings should appear.
+Open **http://127.0.0.1:4173/** for the controlled store, **/landing.html** for the product overview, or **/guide.html** for the **90-SECOND LIVE AUDIT** jury console. **/?mode=clean** is the Clean Control.
 
-On Windows, `start-demo.cmd` also starts the server. Keep the terminal open; Ctrl+C stops it. Set `PORT` if 4173 is busy. Existing `/demo/` URLs redirect to the new frontend root and preserve their query strings.
+On Windows, `start-demo.cmd` starts the server. The inherited server default binds to `0.0.0.0` for hosted demos; for access only from this computer, set `HOST=127.0.0.1`. `PORT` changes port 4173. PowerShell:
 
-The extension automatically monitors local HTTP pages. On another regular HTTP/HTTPS site, click its toolbar icon and **Scan this page**. Chrome internal pages and other protected pages cannot be scanned; the popup reports the error.
-
-## Repository structure
-
-```text
-NudgeKavach/
-├── frontend/                  # Fictional Field store and presenter guide
-│   ├── index.html
-│   ├── guide.html
-│   ├── store.css
-│   └── store.js
-├── backend/
-│   └── server.cjs             # Loopback-only static host and GET /health
-├── extension/                 # Load this folder unpacked in Chrome
-│   ├── manifest.json
-│   ├── rules.js               # Pure deterministic rules
-│   ├── content.js             # DOM observation, evidence, panel, highlights
-│   └── popup.*                # Toolbar activation
-├── tests/
-│   ├── unit/                  # Rule and local-server tests
-│   ├── integration/           # Actual MV3 browser integration test
-│   └── fixtures/              # Curated example NudgeProof report
-├── docs/                      # Detector details, demo script, roadmap, QA
-│   └── assets/                # Curated demo screenshot
-├── scripts/check.cjs          # Syntax and extension-entry checks
-├── .github/workflows/ci.yml    # Automated verification on push/PR
-├── design.md
-├── architecture.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── CHANGELOG.md
-├── package.json
-└── package-lock.json
+```powershell
+$env:HOST = '127.0.0.1'
+npm start
 ```
 
-Frontend code, server code and extension code have separate responsibilities. The extension remains a self-contained installable folder: its popup and on-page panel are part of the browser extension, not the demo website.
+The demo server only serves files. It receives no scan reports and creates no real purchases, accounts or subscriptions. Running the web demo does not require installing npm packages.
 
-## Five detectors
+## Install the browser extension
 
-| Pattern                          | NudgeProof observation                                                                         |
-| -------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Pre-checked optional add-on      | A visible optional checkbox was checked when first observed, without observed user interaction |
-| Unequal Accept/Reject prominence | Accept area is at least 2.5× Reject, or its font at least 1.5×                                 |
-| Suspicious countdown reset       | A timer increased by more than 2 seconds after at least two descending samples                 |
-| Late-visible fee                 | A fee with monetary text appeared after the initial visible fee baseline                       |
-| Confirm-shaming                  | A choice label matched a local guilt or negative-self-description phrase rule                  |
+Use the **same extension/** folder in both browsers:
 
-Each finding includes evidence, explanation, first-seen time and an evidence category. Categories describe the kind of evidence; they are not probability scores. A suspicious timer reset does not by itself prove an offer is fake. A later fee may be a legitimate recalculation.
+| Browser        | Installation                                                                      |
+| -------------- | --------------------------------------------------------------------------------- |
+| Chrome         | Open `chrome://extensions` → Developer mode → Load unpacked → select `extension/` |
+| Microsoft Edge | Open `edge://extensions` → Developer mode → Load unpacked → select `extension/`   |
 
-Open **Clean comparison** for equal cookie buttons, an unchecked optional add-on, neutral refusal, an upfront fee, and a timer that expires without restarting. Expect zero findings, including after selecting the add-on yourself.
+Reload the store after installation or after reloading the extension. Click its green launcher to open the on-page panel. Monitoring starts automatically on local HTTP pages. On another supported HTTP/HTTPS page, use the toolbar popup's **Scan this page** button. Browser-internal and protected pages cannot be scanned. Enterprise browser policy may disable sideloading.
 
-## Panel and timeline
+The panel is an isolated on-page overlay, not a browser-native side panel. No additional detector implementation or permissions are needed for Edge. See Microsoft's [unpacked extension instructions](https://learn.microsoft.com/en-us/microsoft-edge/extensions/getting-started/extension-sideloading).
 
-- **Locate on page** scrolls to the source element; amber outlines show observations.
-- **Copy evidence** copies the observation, matched rule and cautious interpretation; a selectable-text fallback is available when clipboard access is blocked.
-- **Export JSON** downloads the evidence report and timeline.
-- **Pause / Resume** controls collection; events during a pause are unknown.
-- **Hide panel** closes the UI while monitoring continues.
-- **Highlights** toggles the overlays.
+## A repeatable live audit
 
-Findings remain as session history even if a checkbox changes or a cookie banner disappears. Reload to clear the session and establish a new baseline. A route change inside one document keeps the previous baseline and is recorded in the timeline.
+1. Open Pattern Mode and start monitoring: expect three initial findings.
+2. Use **Locate Evidence** to match a finding number to its orange source marker.
+3. Select **Continue to checkout**: observe the late-visible fee.
+4. Keep the tab visible for about 15 seconds: observe the countdown increase.
+5. Open **JOURNEY**, inspect timestamps, and select **Export JSON** to save the NudgeProof report.
+6. Import that JSON in the desktop workspace. The session ID, finding IDs and evidence stay the same.
+7. Export a separate Clean Control session and select both reports for a **Controlled Comparison**.
 
-The live summary shows findings, unique pattern types and session duration. Numbered source markers match the evidence cards. Timeline timestamps are shown in the browser's local time; only observed events are included. Counts and evidence categories are not risk scores or confidence percentages.
+Pattern and Clean Control deliberately share the storefront. A clean result means **no covered manipulation signals observed**, not a guarantee of safety or fairness. See [the jury walkthrough](docs/demo-script.md).
 
-## Development and verification
+## Windows Audit Workspace
 
-Running the demo does not require `npm install`. Install development dependencies when running browser tests:
+A real Electron companion, with no account, live browser bridge or cloud sync. Importing an exported report is an explicit handoff; the connection status correctly remains **Browser Extension Not Connected**.
 
 ```sh
 npm ci
-npm run format:check
+npm run desktop:install
+npm run desktop:dev
+```
+
+Use **Import Audit Report** to select a browser-exported NudgeProof JSON. Review Overview, Audit Sessions, Evidence Library, Reports and Settings. The forensic view shows source, before/after where captured, timestamps, rule and limitation. Evidence search and category filters use the same IDs. The report view supports JSON export and Copy Summary.
+
+The local library persists up to 40 imported sessions in Electron's user-data directory. Settings shows its actual location and offers a confirmed clear action. No production history is preloaded. Imported reports are not encrypted; review them before sharing. JSON import is capped at 1 MiB per file.
+
+```sh
+npm run desktop:build
+```
+
+On Windows this creates an **unsigned portable x64 build** under `dist/NudgeKavach Desktop-win32-x64/`. Run `NudgeKavach Desktop.exe` with the entire folder intact. Binaries are ignored by Git. This is a development build, not a signed installer or store release. See [desktop setup](desktop/README.md).
+
+Electron was chosen because this environment lacks the Rust/C++ toolchain required by [Tauri on Windows](https://v2.tauri.app/start/prerequisites/). The extension remains vanilla JavaScript; desktop rendering follows Electron's [isolation and sandbox guidance](https://www.electronjs.org/docs/latest/tutorial/security).
+
+## Evidence, not verdicts
+
+| Detector                     | Local observation                                                                  |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| Pre-selected optional choice | An optional checkbox was checked at first observation without observed interaction |
+| Unequal choice prominence    | Accept/Reject area, font size or computed-opacity threshold matched                |
+| Suspicious countdown reset   | A timer increased by more than 2 seconds after at least two descending samples     |
+| Late-visible fee             | Monetary fee text appeared after the initial visible fee baseline                  |
+| Possible confirm-shaming     | A choice label matched a narrow English phrase rule                                |
+
+Evidence categories are **OBSERVED STATE**, **OBSERVED CHANGE**, **OBSERVED BEHAVIOR**, **MEASURED UI** and **HEURISTIC**. They are not confidence percentages. A reset may be a legitimate offer extension. A later fee may be a recalculation. Findings never establish designer intent.
+
+The new shared [NudgeProof contract](docs/nudgeproof.md) adds stable session/finding IDs and structured presentation to the original report. Original evidence, interpretation, `confidence` category, first-seen time and timeline are retained. Legacy v0.1 exports remain importable.
+
+The **IMPACT** summary groups unambiguous observed optional/late charge labels by currency. It does not claim savings or a verified checkout total. Choice, privacy-choice and time-pressure counts describe covered signals only.
+
+## Browser controls
+
+- **FINDINGS**: compact cards, expandable NudgeProof, Locate Evidence, Copy Evidence and View in Journey.
+- **JOURNEY**: actual monitoring, baseline, finding, timer-reset and pause/resume events.
+- **Pause / Resume**: controls collection; activity during a pause is unknown.
+- **Highlights**: non-intercepting source outlines and matching finding numbers.
+- **Hide panel**: keeps monitoring active. Reload starts a new session.
+- **PROTECT**: clearly marked **Coming in Pro** preview; it does not change page choices.
+
+The summary derives observations, unique pattern types, observed countdown jumps and wall-clock session duration from the session. Findings remain historical when a source is changed or removed. No event is fabricated for the jury script.
+
+## Repository map
+
+```text
+frontend/                 Product site, controlled Field store, jury console, setup page
+backend/server.cjs        Static demo host; no report ingestion
+extension/                Self-contained Chrome / Edge MV3 package
+  rules.js                Pure deterministic detector helpers
+  report.js               Shared NudgeProof validation, IDs, impact and summary
+  content.js              DOM observation, evidence, journey and panel
+  popup.*                 User-triggered activation
+desktop/                  Electron main/preload, local library and Audit Workspace UI
+tests/unit/               Detector, server, report-contract and library tests
+tests/integration/        Real MV3 and real Electron integration checks
+tests/fixtures/           Clearly identified original controlled report
+docs/                     Evidence model, demos, limitations and verification
+scripts/                  Source checks and Windows packaging
+design.md                 Shared visual and interaction language
+architecture.md           Runtime/data boundaries and technical decisions
+```
+
+## Verify changes
+
+```sh
+npm ci
+npm run desktop:install
+npm run format
 npm run check
 npm test
 npx playwright install chromium
 npm run test:browser
+npm run test:desktop
 ```
 
-`npm run dev` restarts the server when its source changes. Frontend files are served without caching; refresh the browser after editing them. For extension changes, click **Reload** on `chrome://extensions`, then refresh the store.
+Browser integration loads the actual MV3 package in a temporary Chromium profile. Desktop integration launches Electron with an isolated temporary library, imports the browser's exported report, and checks review/export. Generated screenshots and reports are under ignored `test-results/`. Browser tests use a free local port. Unit tests need no browser.
 
-Use `npm run format` to apply the shared formatting rules. Frontend, backend, extension and documentation sources are kept readable with a pinned formatter.
+See [verification scope](docs/test-results.md), [architecture](architecture.md), [design](design.md), [detectors](docs/detectors.md), [security](SECURITY.md) and [contributing](CONTRIBUTING.md).
 
-Browser tests start the actual backend on an OS-assigned free port and load the actual MV3 extension into a temporary Chromium profile. They verify all five patterns, clean controls, dynamic elements, timeline, pause/resume, report download, popup errors and Chrome messaging. Generated screenshots and reports go under ignored **test-results/**. They do not overwrite curated documentation assets or fixtures.
+## Scope and future work
 
-The popup test substitutes active-tab selection because an automated popup tab is itself active. Real scripting and messaging still execute against the local demo. A real toolbar click granting access on an unrelated website remains a manual smoke check.
+Current screenshots: [browser NudgeProof](docs/assets/browser-audit.jpg), [Windows workspace](docs/assets/windows-workspace.jpg), [controlled comparison](docs/assets/controlled-comparison.jpg), [jury console](docs/assets/jury-console.jpg), [product overview](docs/assets/product-overview.jpg). These show controlled demo observations, not real browsing history.
 
-GitHub Actions runs syntax, unit and browser checks on pushes and pull requests. See [verification details](docs/test-results.md) for local results and scope.
+The scanner handles the top-level DOM, native and basic ARIA checkboxes, English phrases, supported currency text on leaf elements and textual countdowns. It does not inspect iframes, shadow DOM, images/canvas, earlier visits or cross-page checkouts. Geometry and direct computed opacity do not measure overall contrast or accessibility.
 
-## Documentation
+Page analysis runs locally. There is no runtime AI, analytics, telemetry, page upload, browser-history collection, cloud sync or account requirement. User-triggered exports omit URL queries/fragments but paths and snippets may contain sensitive data. Desktop stores only reports explicitly imported.
 
-| Document                                | Purpose                                                        |
-| --------------------------------------- | -------------------------------------------------------------- |
-| [Design](design.md)                     | Visual language, UI behavior and evidence presentation         |
-| [Architecture](architecture.md)         | Components, observation flow, boundaries and decisions         |
-| [Detector reference](docs/detectors.md) | Rules, thresholds, evidence and false-positive limits          |
-| [Demo script](docs/demo-script.md)      | Hackathon walkthrough and recovery steps                       |
-| [Roadmap](docs/roadmap.md)              | Follow-up work, explicitly separated from implemented features |
-| [Contributing](CONTRIBUTING.md)         | Setup, checks and contribution workflow                        |
-| [Security](SECURITY.md)                 | Privacy model, permissions, report handling and scope          |
-| [Changelog](CHANGELOG.md)               | MVP changes                                                    |
+**Future / Pro:** Make This Page Fair, optional-preselection removal, consent normalization, neutral wording, native bridge, PDF export and developer CI prevention. These are not implemented controls. See [roadmap](docs/roadmap.md).
 
-## Scope and privacy
-
-The extension sends no page data over the network. Evidence lives in tab memory; JSON export is user-triggered and omits query strings and fragments. Text snippets can contain page content, so review an export before sharing it. The backend exposes only the frontend and a health route; it does not collect reports or create real orders.
-
-This MVP scans the top-level DOM, native checkboxes, English phrases, currency fee text on leaf elements, and textual countdowns. It does not inspect iframes, shadow DOM, images/canvas, cross-page checkouts or previous visits. Geometry is only one aspect of visual prominence. Large pages, background throttling and rapid changes can reduce coverage. A clean result is not a guarantee.
-
-AI is intentionally omitted. Any future optional classifier must preserve deterministic observations and obtain consent before transmitting page text.
-
-## Originality and licensing
-
-All project code and CSS illustrations were created for this MVP. No external repository code or image assets were copied. Chrome platform behavior was checked against official [activeTab](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab) and [scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting) documentation. Development-only Playwright retains its own license. A project license has not been selected; public repository visibility alone does not grant an open-source license.
+Project code is original. External repositories are conceptual inspiration only; no repository code was copied. Existing brand assets are retained from this repository. Third-party dependencies retain their own licenses. The team has not selected a project license; public visibility alone does not grant one.

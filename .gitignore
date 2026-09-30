@@ -5,6 +5,10 @@ test-results/
 .env.*
 !.env.example
 coverage/
+desktop/node_modules/
+desktop/.cache/
+dist/
+.desktop-stage/
 playwright-report/
 *.log
 *.zip

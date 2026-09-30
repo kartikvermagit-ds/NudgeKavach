@@ -1,76 +1,70 @@
 # NudgeKavach design
 
-NudgeKavach makes a questionable interface choice inspectable. A finding should answer **what was observed, what rule matched, and what remains uncertain** before asking the user to act.
+**See the Manipulation Before You Click.**
 
-Tagline: **See the Manipulation Before You Click.**
+An evidence-first interface manipulation auditor. **Evidence before judgement.**
 
-## Product surfaces
+## Shared language
 
-| Surface          | Purpose                                                                   | Implementation                          |
-| ---------------- | ------------------------------------------------------------------------- | --------------------------------------- |
-| Field demo store | A controlled, fictional shopping journey with five deliberate patterns    | `frontend/`                             |
-| Clean comparison | The same product and layout with neutral defaults and upfront disclosure  | `/?mode=clean`                          |
-| Toolbar popup    | Start monitoring the current HTTP/HTTPS tab and explain activation errors | `extension/popup.*`                     |
-| On-page panel    | Read findings, inspect evidence, locate sources and export a report       | `extension/content.js`                  |
-| Presenter guide  | Explain a repeatable demonstration                                        | `/guide.html` and `docs/demo-script.md` |
+Browser: observe. NudgeProof: explain. Windows: review. Protect: future interface changes.
 
-The panel is part of the content script. It is not Chrome's native Side Panel API. It appears on the right of the inspected page and opens from the floating NudgeKavach launcher or the toolbar popup.
+Use FINDINGS, TIMELINE / CHOICE JOURNEY, EVIDENCE, IMPACT and REPORT consistently. A finding describes what matched a covered rule, not what a designer intended. “Suspicious countdown reset” and “Possible confirm-shaming” remain cautious.
 
-## Evidence card hierarchy
+Evidence labels are **OBSERVED STATE**, **OBSERVED CHANGE**, **OBSERVED BEHAVIOR**, **MEASURED UI** and **HEURISTIC**. Measured UI means that dimensions/font/direct opacity were measured; it does not certify manipulation or accessibility. The legacy confidence field is retained as a category, not converted into a score.
 
-1. **Evidence category:** Observed state, Observed change, Observed behavior, or Heuristic.
-2. **Finding title:** a cautious description such as “Suspicious countdown reset.”
-3. **Plain-language summary:** a short description of the observation.
-4. **NudgeProof:** the unchanged observed text, measurement or transition, followed by the rule that matched.
-5. **Why it matters / Limitation:** the existing interpretation is separated at its first sentence; its meaning and cautious wording are preserved.
-6. **Locate on page / Copy evidence:** numbered source markers match the card. Copy includes the evidence category, first-observed timestamp, observations, rule and complete interpretation.
+## Visual system
 
-The JSON field named `confidence` stores an evidence category. It is not a statistical confidence score. Do not turn these labels into percentages or claim that a heuristic proves deceptive intent.
+| Token      | Value             | Purpose                          |
+| ---------- | ----------------- | -------------------------------- |
+| Background | #0C1816 / #10221F | Product and audit surfaces       |
+| Surface    | #162B26 / #1B332D | Cards, inspector and navigation  |
+| Lime       | #C7F36B           | Primary actions, selected states |
+| Orange     | #ED942F           | Evidence outlines and accents    |
+| Text       | #F2F4EE           | Main copy                        |
+| Muted      | #A7B7AF           | Supporting text                  |
 
-## Visual language
+Use the repository's shield-eye brand asset on web, popup and desktop; a small inline shield-eye keeps the injected panel self-contained. Use local system typography, readable evidence and restrained borders. No downloaded fonts, hacker decoration, fake counters or fabricated security claims.
 
-The store uses cream, moss and forest green, generous whitespace, and an original headphone illustration drawn in CSS. Its fictional branding keeps the example recognizable without relying on external product images.
+The Field store retains its cream/moss product surface and original CSS headphone illustration so Pattern and Clean remain the same controlled shopping journey. A compact NUDGEKAVACH LAB bar identifies the fixture. Product chrome uses the shared palette.
 
-| Token or treatment           | Current value | Use                              |
-| ---------------------------- | ------------- | -------------------------------- |
-| Store background             | `#f5f5ed`     | Warm page canvas                 |
-| Store text                   | `#172b22`     | Main copy                        |
-| Product illustration surface | `#e0e7d7`     | Product image area               |
-| Store primary action         | `#244733`     | Checkout and consent actions     |
-| Urgency surface              | `#f3e2c7`     | Countdown context                |
-| Panel background             | `#10221f`     | Auditor surface                  |
-| Panel card background        | `#1b332d`     | Individual findings              |
-| Panel text                   | `#eef6ef`     | Main evidence copy               |
-| Lime accent                  | `#c7f36b`     | Launcher and evidence categories |
-| Highlight border             | `#ed942f`     | Source-element outline           |
-| Store keyboard focus         | `#367aa6`     | Visible focus outline            |
+## Browser audit
 
-The store and auditor use locally available sans-serif fonts. No font download is required. Product content uses a two-column layout on wide screens and a single column below 750px. The desktop panel is at most 410px wide. Below 600px it becomes a bottom-aligned panel capped at 72% of the viewport height, leaving page context visible.
+Header: NudgeKavach / Interface Manipulation Auditor, Monitoring or Paused, LOCAL ANALYSIS • NO PAGE UPLOAD.
 
-The live summary separates findings from unique pattern types and shows wall-clock session duration, including paused time. These counts do not imply severity, safety, prevalence or statistical confidence. The monitoring status remains independently visible.
+The summary uses actual observations, pattern types, retained observed countdown jumps and wall-clock session duration (including pauses). It is not a risk score.
 
-## Interaction behavior
+FINDINGS cards are compact by default: stable number, category, cautious title, short evidence and Locate Evidence / Details. Expanded NudgeProof includes captured before/after where available, observed time, original evidence, matched rule, why this may matter and limitation. Copy Evidence has a selectable fallback. View in Journey opens the genuine linked event.
 
-- Monitoring starts automatically on matching local pages. Other regular websites require a user-initiated toolbar scan.
-- Opening or hiding the panel does not change monitoring. **Pause** stops scans; **Resume** continues with the existing session state.
-- **Highlights** toggles overlay outlines. The overlays do not intercept pointer input or change the geometry being measured.
-- Findings remain as session history even if a user corrects a choice or dismisses a banner. Reloading creates a new baseline.
-- The timeline shows the latest 30 actual events in chronological order, with local clock timestamps, elapsed times and connecting lines. It does not synthesize unrecorded timer ticks. JSON export remains unchanged and contains up to 120 retained events.
-- The empty state explains that delayed behaviors need observation time and that zero findings is not a safety guarantee.
-- Copy uses the clipboard only on an explicit click. If clipboard access is unavailable, selectable text is provided for manual copying; no clipboard permission is requested.
-- Source markers do not intercept clicks or change layout. Locate respects reduced-motion settings; a source no longer visible remains in history with its locate button disabled.
-- Opening the panel focuses its close button; closing returns focus to the launcher. Escape closes it. Periodic updates retain card controls and do not move focus.
-- Panel/card transitions last 180–240ms, and the launcher pulses once only when a new finding appears. Reduced-motion preferences disable these effects.
-- The popup distinguishes ready, pending, active, paused, unsupported and activation-error states. A read-only status request avoids claiming that a paused session is monitoring.
+Locate scrolls to the source, draws an orange outline with the same finding number and briefly pulses without layout changes or pointer interception. Removed sources remain in history and cannot be located. No automatic page changes occur.
 
-## Accessibility and content rules
+JOURNEY displays real events chronologically with timestamps, types, linked finding IDs and captured evidence. It can collapse. A missing or retained-out event is acknowledged, not invented. Repeated timer observations do not become fake continuous monitoring claims.
 
-Use real buttons and labels for interactive controls. Keep evidence text readable and selectable. Retain card nodes during updates to avoid resetting keyboard focus. The store includes visible focus styling and status messages; the launcher exposes its expanded state.
+IMPACT groups unambiguous charge labels by currency and describes choice, privacy-choice and time-pressure signals. It never says money was saved or infers tracking from button styling. Uncertain or recurring amounts are not treated as exact totals.
 
-Avoid verdicts such as “scam” or “illegal.” Prefer concrete language: “First observed checked,” “area 3.00×,” or “countdown increased from 0s to 12s.” Label the controlled demonstration clearly. Never imply that an order, subscription or tracking cookie was created by the demo.
+PROTECT is a **Pro Preview / Coming in Pro** surface. MAKE THIS PAGE FAIR is visibly disabled. Proposed optional-default removal, equal consent styling, neutral refusal and charge review are future work, not simulated success.
 
-The intentionally unequal consent buttons in the pattern store are a detector fixture. The clean comparison demonstrates equal sizing, a neutral refusal, an unchecked optional plan and an upfront fee. These fixtures are not design recommendations for production checkout.
+The empty state says no covered manipulation signals were observed and explains that monitoring may still reveal delayed behaviors. Zero is not a guarantee of safety/fairness. Pause suspends collection; hiding the panel does not.
 
-## Known design gaps
+## Windows Audit Workspace
 
-The overlay can cover page content, and there is no user-positioned docking mode. Accessibility has not been independently audited. The scanner does not measure color contrast, keyboard order or semantic equivalence, so the prominence finding must continue to describe geometry only. Future visual work should preserve evidence readability, keyboard operation and the clean comparison as a control.
+A desktop sidebar provides Overview, Audit Sessions, Evidence Library, Reports and Settings. The browser connection stays **Not Connected** in import-only mode. Import success means a report was imported, not that a live connection exists.
+
+Overview starts empty. Statistics derive only from imported sessions/events and completed exports, with time labels explaining their source. Session review uses page/session information, findings/journey and an evidence inspector. Finding #04 is the same #04 from the browser/export; the session ID distinguishes identical numbers across audits.
+
+Evidence Library filters by shared categories and searches IDs, patterns and sessions. Controlled Comparison requires the reviewer to select Pattern/Clean snapshots explicitly; it cannot infer modes from the scrubbed report URL. Counts and type differences come from those files.
+
+Reports include summary, findings, journey/evidence, limitations and export information. JSON export and Copy Summary work. There is no fake PDF export, account system, biometric login or live bridge.
+
+Design for 1366×768 and 1920×1080, with a usable minimum width of 900px. Evidence wraps and stays selectable. Empty/importing/error/success states explain the next action. Library deletion is a separate confirmed destructive action.
+
+## Web and jury presentation
+
+The product landing explains DETECTION IS EASY. EVIDENCE IS THE PRODUCT. Any example evidence is labeled illustrative. No sample card is represented as a current scan.
+
+Pattern and Clean Control preserve equivalent layout and detector fixtures. Reset reloads the selected mode and creates a fresh browser baseline. The jury console guides a real 12-step browser → NudgeProof → Windows import → controlled comparison. Steps are presenter actions, not claims that an event happened.
+
+## Accessibility and honesty
+
+Use semantic controls, visible keyboard focus, real labels, readable contrast, reduced-motion support and textContent for evidence. Keep panel focus stable during polling; Escape closes the panel and returns focus. On narrow browser viewports the panel leaves page context visible.
+
+Network privacy claims describe implemented boundaries only. An exported file may contain sensitive page text. Imported snapshots are user-provided observations, not signed forensic attestations. Layout checks are part of QA; no independent accessibility certification is claimed.
