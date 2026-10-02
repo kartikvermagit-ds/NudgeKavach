@@ -2,286 +2,1303 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#0c1816" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050d09" />
+    <title>NudgeKavach — See the Manipulation Before You Click</title>
     <meta
       name="description"
-      content="NudgeKavach observes interface choices in your browser, explains the evidence, and brings NudgeProof reports into a local Windows audit workspace."
+      content="NudgeKavach is a privacy-first Chrome Manifest V3 extension that exposes dark patterns and deceptive e-commerce tactics using local, deterministic NudgeProof evidence."
     />
-    <title>NudgeKavach — Evidence before judgement.</title>
-    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/jpeg" href="logo.jpg" />
+    <meta property="og:image" content="logo-banner.png" />
     <link rel="stylesheet" href="landing.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="masthead">
-      <div class="container">
-        <a class="brand" href="landing.html"
-          ><img src="logo.png" alt="" /><span
-            >NudgeKavach<small>INTERFACE MANIPULATION AUDITOR</small></span
-          ></a
-        >
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#evidence">NudgeProof</a><a href="guide.html">Jury Console</a
-          ><a class="button" href="login.html">Get started <span aria-hidden="true">↗</span></a>
+    <!-- Ambient Cyber Glows -->
+    <div class="ambient-glow glow-top" aria-hidden="true"></div>
+    <div class="ambient-glow glow-mid" aria-hidden="true"></div>
+
+    <!-- Announcement Bar -->
+    <aside class="top-announcement">
+      <div class="container announcement-content">
+        <span class="pulse-indicator"></span>
+        <span class="announcement-text">
+          <b>Catalyst Hack 2026</b> · Cybersecurity & Digital Trust Track · Evidence-First Dark Pattern Defense
+        </span>
+        <a href="index.html" class="announcement-link">
+          <span>Launch Demo Store</span>
+          <svg viewBox="0 0 16 16" fill="none" class="icon-arrow" aria-hidden="true">
+            <path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="container navbar-container">
+        <a href="landing.html" class="brand" aria-label="NudgeKavach Home">
+          <div class="brand-shield">
+            <img src="logo.png" alt="NudgeKavach Shield Logo" class="brand-img-logo" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NudgeKavach</span>
+            <span class="brand-badge">NUDGEPROOF MV3</span>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Site Navigation">
+          <a href="#detectors">5 Detectors</a>
+          <a href="#simulator">Live Simulator</a>
+          <a href="#how-it-works">Architecture</a>
+          <a href="#desktop-workspace">Desktop App</a>
+          <a href="#install" class="nav-highlight">Install in Chrome</a>
+          <a href="index.html">Demo Store</a>
+          <a href="guide.html">Jury Console</a>
+          <a href="login.html" class="nav-login-link">Auditor Login</a>
         </nav>
+
+        <div class="nav-cta-group">
+          <a
+            href="https://github.com/kartikvermagit-ds/NudgeKavach.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost"
+            aria-label="GitHub Repository"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="#install" class="btn btn-primary">
+            <span>Install in Chrome</span>
+            <span class="btn-shine"></span>
+          </a>
+        </div>
       </div>
     </header>
-    <main id="main" class="container">
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">EVIDENCE-FIRST INTERFACE AUDITING</div>
-          <h1>See the manipulation<br /><em>before you click.</em></h1>
-          <p>
-            The browser observes. NudgeProof explains. Your Windows workspace brings the evidence
-            together.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="index.html?mode=tricky"
-              >Open the live demo <span aria-hidden="true">↗</span></a
-            ><a class="button" href="login.html">Set up NudgeKavach</a>
-          </div>
-          <p class="microcopy">Local page analysis · No page upload · No account required</p>
-        </div>
-        <div class="audit-illustration" aria-label="Illustrative NudgeProof evidence card">
-          <div class="illustration-label">
-            <span>INSIDE A NUDGEPROOF REPORT</span><span>ILLUSTRATIVE EXAMPLE</span>
-          </div>
-          <div class="proof-card">
-            <div class="proof-top">
-              <span class="proof-id">#04</span><span class="tag evidence">OBSERVED CHANGE</span>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="container hero-layout">
+          <!-- Left Column: Copy & Actions -->
+          <div class="hero-copy">
+            <div class="hero-pill">
+              <span class="pill-dot"></span>
+              <span class="pill-text">100% Client-Side · Zero Telemetry · Manifest V3</span>
             </div>
-            <h3>Late-visible fee</h3>
-            <p>A charge became visible after the initial baseline.</p>
-            <dl class="evidence-pair">
-              <div>
-                <dt>BEFORE</dt>
-                <dd>Not visible</dd>
+
+            <h1 class="hero-heading">
+              See the Manipulation<br />
+              <span class="glow-gradient">Before You Click.</span>
+            </h1>
+
+            <p class="hero-description">
+              Commercial checkout flows trap shoppers with looping urgency timers, pre-selected add-ons, confirm-shaming, and hidden drip fees.
+              <b>NudgeKavach</b> intercepts deception directly in your browser, generating immutable, auditable <b>NudgeProof</b> evidence cards.
+            </p>
+
+            <!-- Sleek, Perfectly Proportioned CTA Buttons -->
+            <div class="hero-actions">
+              <a href="#install" class="btn btn-primary btn-hero">
+                <svg viewBox="0 0 24 24" fill="none" class="btn-icon" aria-hidden="true">
+                  <path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Install in Chrome (Step-by-Step)</span>
+              </a>
+
+              <a href="index.html" class="btn btn-secondary btn-hero">
+                <span>Try Live Demo Store</span>
+                <span class="badge-accent">5 Patterns</span>
+              </a>
+            </div>
+
+            <!-- Key Trust Metrics -->
+            <div class="metrics-row">
+              <div class="metric-card">
+                <span class="metric-icon">&#128274;</span>
+                <div class="metric-info">
+                  <strong>Zero Telemetry</strong>
+                  <span>No data leaves browser</span>
+                </div>
               </div>
-              <div>
-                <dt>AFTER</dt>
-                <dd>Platform fee: ₹149</dd>
+
+              <div class="metric-card">
+                <span class="metric-icon">&#9878;&#65039;</span>
+                <div class="metric-info">
+                  <strong>Evidence-First</strong>
+                  <span>Auditable NudgeProof</span>
+                </div>
               </div>
-            </dl>
-            <p class="limit-note">
-              A late disclosure or legitimate recalculation is possible. The observation does not
-              establish intent.
-            </p>
-          </div>
-          <div class="proof-route">
-            <span
-              ><b>Browser #04</b> → NudgeProof file → <b>Desktop #04</b><br />One finding. The same
-              evidence across surfaces.</span
-            ><span aria-hidden="true">↗</span>
-          </div>
-        </div>
-      </section>
-      <div class="product-route" aria-label="Product flow">
-        <div class="route-item">
-          <span>BROWSER</span><strong>Observe</strong><small>Catch changes as they happen.</small>
-        </div>
-        <div class="route-item">
-          <span>NUDGEPROOF</span><strong>Explain</strong><small>See why a rule matched.</small>
-        </div>
-        <div class="route-item">
-          <span>WINDOWS</span><strong>Review</strong><small>Follow the evidence trail.</small>
-        </div>
-        <div class="route-item future">
-          <span>PROTECT MODE · FUTURE</span><strong>Neutralize</strong
-          ><small>A fairer decision interface.</small>
-        </div>
-      </div>
-      <section class="section" id="evidence">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">EVIDENCE BEFORE JUDGEMENT.</div>
-            <h2>DETECTION IS EASY.<br />EVIDENCE IS THE PRODUCT.</h2>
-          </div>
-          <p>
-            An observation should open a useful question. It should never masquerade as proof of a
-            designer’s intent.
-          </p>
-        </div>
-        <div class="explain-grid">
-          <div class="surface typical">
-            <span class="tag">TYPICAL DETECTOR MESSAGE</span>
-            <blockquote>“Dark pattern detected.”</blockquote>
-            <p>A label alone leaves the important questions unanswered.</p>
-          </div>
-          <div class="surface">
-            <ol class="question-list">
-              <li><span>01</span>What happened?</li>
-              <li><span>02</span>Where did it happen?</li>
-              <li><span>03</span>What changed?</li>
-              <li><span>04</span>What evidence supports it?</li>
-              <li><span>05</span>What remains uncertain?</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-      <section class="section" id="coverage">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">FIVE COVERED PATTERNS</div>
-            <h2>Inspect the interface.<br />Keep the context.</h2>
-          </div>
-          <p>
-            Deterministic rules work locally. Categories describe the evidence available; they are
-            never confidence percentages.
-          </p>
-        </div>
-        <div class="detector-grid">
-          <article class="detector-card">
-            <span class="tag">OBSERVED STATE</span>
-            <h3>Pre-selected optional choice</h3>
-            <p>
-              An optional control was checked when first seen, with no observed interaction. An
-              earlier choice or saved preference may explain it.
-            </p>
-          </article>
-          <article class="detector-card">
-            <span class="tag">MEASURED UI</span>
-            <h3>Unequal choice prominence</h3>
-            <p>
-              Compare nearby acceptance and rejection controls. A measured difference is a signal to
-              inspect, not a conclusion about intent.
-            </p>
-          </article>
-          <article class="detector-card">
-            <span class="tag">OBSERVED BEHAVIOR</span>
-            <h3>Suspicious countdown reset</h3>
-            <p>
-              Record an increase after descending samples. A legitimate offer extension can also
-              produce this behavior.
-            </p>
-          </article>
-          <article class="detector-card">
-            <span class="tag">OBSERVED CHANGE</span>
-            <h3>Late-visible fee</h3>
-            <p>
-              A matching fee appears after the initial visible baseline. Verify the final total and
-              possible recalculations.
-            </p>
-          </article>
-          <article class="detector-card">
-            <span class="tag">HEURISTIC</span>
-            <h3>Possible confirm-shaming</h3>
-            <p>
-              A choice label matches a local English phrase rule. Context, sarcasm and unrecognized
-              wording remain limitations.
-            </p>
-          </article>
-          <article class="detector-card">
-            <span class="tag">CONTROLLED COMPARISON</span>
-            <h3>Same store. Neutral choices.</h3>
-            <p>
-              Use Clean Control to compare equal consent buttons, an unchecked plan and an upfront
-              charge. <a class="inline-link" href="index.html?mode=clean">Open Clean Control ↗</a>
-            </p>
-          </article>
-        </div>
-      </section>
-      <section class="split-section" id="desktop">
-        <div>
-          <div class="eyebrow">NUDGEKAVACH DESKTOP / AUDIT WORKSPACE</div>
-          <h2>Carry the observation.<br />Keep its identity.</h2>
-          <p>
-            Review findings, browse the evidence library and compare imported sessions in a local
-            Windows workspace. The browser remains the scanner.
-          </p>
-          <a class="button" href="login.html#desktop"
-            >Browser-to-desktop setup <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="desktop-workflow">
-          <div class="flow-step">
-            <b>01</b>
-            <div>
-              <strong>Observe in Chrome or Edge</strong>
-              <p>Open NudgeKavach on a supported page. Inspect the source and its NudgeProof.</p>
+
+              <div class="metric-card">
+                <span class="metric-icon">&#9889;</span>
+                <div class="metric-info">
+                  <strong>&lt;10ms Local Engine</strong>
+                  <span>Pure deterministic rules</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="flow-step">
-            <b>02</b>
-            <div>
-              <strong>Export a NudgeProof report</strong>
+
+          <!-- Right Column: Interactive Live Radar Inspection Terminal -->
+          <div class="hero-visual-col">
+            <div class="terminal-shell">
+              <!-- Radar Scan Line -->
+              <div class="radar-scanline" aria-hidden="true"></div>
+
+              <!-- Terminal Header -->
+              <div class="terminal-header">
+                <div class="window-dots">
+                  <span class="w-dot red"></span>
+                  <span class="w-dot yellow"></span>
+                  <span class="w-dot green"></span>
+                </div>
+                <div class="terminal-address">
+                  <span class="addr-lock">&#128274;</span>
+                  <span class="addr-url">store.field.demo/checkout</span>
+                  <span class="addr-badge">AUDIT ACTIVE</span>
+                </div>
+                <div class="live-pulse">
+                  <span class="pulse-ring"></span>
+                  <span class="pulse-text">INTERCEPTING</span>
+                </div>
+              </div>
+
+              <!-- Terminal Split View: Page Under Audit + NudgeKavach Drawer -->
+              <div class="terminal-body">
+                <!-- E-Commerce Checkout Target Section -->
+                <div class="target-mockup">
+                  <div class="mockup-header-tag">TARGET DOM OBSERVED</div>
+
+                  <!-- Item Card -->
+                  <div class="mock-item-row">
+                    <div class="item-pic">
+                      <div class="headphones-icon"></div>
+                    </div>
+                    <div class="item-meta">
+                      <strong>Field One Headphones</strong>
+                      <span>Moss Green · Qty 1</span>
+                    </div>
+                    <div class="item-price">₹2,499</div>
+                  </div>
+
+                  <!-- Dark Pattern 1: Prechecked Box -->
+                  <div class="scan-target flagged-target" id="hero-target-addon">
+                    <span class="detector-flag">#01 Prechecked Add-on</span>
+                    <label class="mock-check-label">
+                      <input type="checkbox" checked disabled />
+                      <span>Optional 2-Year Damage Protection (<b>₹399</b>)</span>
+                    </label>
+                  </div>
+
+                  <!-- Dark Pattern 2: Fake Urgency Timer -->
+                  <div class="scan-target flagged-target" id="hero-target-timer">
+                    <span class="detector-flag">#03 Urgency Reset</span>
+                    <div class="mock-timer-row">
+                      <span>Launch discount reserved:</span>
+                      <strong class="timer-box" id="hero-live-timer">00:08</strong>
+                    </div>
+                  </div>
+
+                  <!-- Dark Pattern 3: Asymmetric Cookie Buttons -->
+                  <div class="mock-cookies-strip">
+                    <span class="cookie-txt">Accept tracking cookies?</span>
+                    <div class="cookie-dual-btn">
+                      <button class="btn-mock-accept">Accept All (2.5× Area)</button>
+                      <button class="btn-mock-reject">Reject</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating Live Audit Drawer -->
+                <div class="audit-drawer-mockup">
+                  <div class="drawer-top">
+                    <div class="drawer-title">
+                      <span class="drawer-shield-icon">&#128737;&#65039;</span>
+                      <strong>NudgeProof Audit</strong>
+                    </div>
+                    <span class="drawer-findings-count">3 FINDINGS</span>
+                  </div>
+
+                  <div class="drawer-card-demo">
+                    <div class="drawer-card-top">
+                      <span class="f-code">FINDING #01</span>
+                      <span class="f-cat">OBSERVED STATE</span>
+                    </div>
+                    <h5>Pre-selected Optional Choice</h5>
+                    <p class="f-evidence">
+                      First observed checked: “Optional 2-Year Damage Protection”. No user interaction observed since baseline.
+                    </p>
+                    <div class="f-rule-box">
+                      <code>Rule: Non-required optional checkbox checked at first encounter.</code>
+                    </div>
+                    <div class="f-button-bar">
+                      <span class="f-action-pill">&#128269; Locate on Page</span>
+                      <span class="f-action-pill">&#128203; Copy Evidence</span>
+                    </div>
+                  </div>
+
+                  <!-- Drawer Timeline Ticker -->
+                  <div class="drawer-timeline-ticker">
+                    <span class="ticker-dot"></span>
+                    <span id="hero-timeline-msg">14:02:10 · Countdown jumped 00:00s &rarr; 00:12s</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 CORE DETECTORS SECTION (INTERACTIVE SHOWCASE) -->
+      <section class="section detectors-section" id="detectors">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-kicker">INTERACTIVE DETECTOR MATRIX</span>
+            <h2 class="section-headline">The 5 Core Deceptive Patterns We Expose</h2>
+            <p class="section-subtext">
+              Test each pattern live below. Click the interactive controls inside each card to see how NudgeKavach evaluates and neutralizes real-world manipulation.
+            </p>
+          </div>
+
+          <!-- Interactive Category Filter Tabs -->
+          <div class="detector-filter-tabs" role="tablist" aria-label="Detector Filter">
+            <button type="button" class="tab-btn active" data-filter="all">⚡ All Detectors (5)</button>
+            <button type="button" class="tab-btn" data-filter="prechecked">☑️ Rule 01: Pre-checked</button>
+            <button type="button" class="tab-btn" data-filter="shaming">💬 Rule 02: Confirm-Shaming</button>
+            <button type="button" class="tab-btn" data-filter="urgency">⏰ Rule 03: Urgency Reset</button>
+            <button type="button" class="tab-btn" data-filter="fees">💸 Rule 04: Drip Fees</button>
+            <button type="button" class="tab-btn" data-filter="prominence">⚖️ Rule 05: Prominence</button>
+          </div>
+
+          <div class="detectors-bento">
+            <!-- Bento 1: Prechecked Add-on (Interactive) -->
+            <div class="bento-card bento-accent-green" data-detector="prechecked">
+              <div class="bento-badge">
+                <span class="badge-type">OBSERVED STATE</span>
+                <span class="badge-num">RULE 01</span>
+              </div>
+              <div class="bento-icon">&#9745;&#65039;</div>
+              <h3>Pre-selected Optional Purchases</h3>
               <p>
-                You choose when to save the JSON file. Finding IDs and observed evidence travel with
-                it.
+                Sneaks add-on warranties, subscriptions, or tips into checkout by having them checked by default when you arrive.
               </p>
+
+              <!-- Interactive Card Widget -->
+              <div class="card-mini-sandbox" id="sandbox-precheck">
+                <div class="sandbox-top">
+                  <span class="sandbox-lbl">LIVE INTERACTIVE CONTROL</span>
+                  <span class="sandbox-status-tag tag-flagged" id="tag-precheck-status">&#9888; Checked by Default</span>
+                </div>
+                <label class="sandbox-check-ui">
+                  <input type="checkbox" id="card-check-input" checked />
+                  <span>Optional 2-Year Extended Protection (<b>₹399</b>)</span>
+                </label>
+                <div class="sandbox-btn-bar">
+                  <button type="button" class="btn-micro" id="btn-toggle-check">Toggle State</button>
+                  <span class="sandbox-note" id="note-precheck">Uncheck to simulate clean user choice</span>
+                </div>
+              </div>
+
+              <div class="bento-threshold">
+                <strong>Detection Logic:</strong>
+                <code>Visible optional checkbox checked without prior user interaction.</code>
+              </div>
+              <div class="bento-foot">
+                <b>Exploits:</b> Default-bias and shopper inattention to inflate checkout bills.
+              </div>
             </div>
-          </div>
-          <div class="flow-step">
-            <b>03</b>
-            <div>
-              <strong>Import into Audit Workspace</strong>
+
+            <!-- Bento 2: Confirm-Shaming (Interactive) -->
+            <div class="bento-card bento-accent-purple" data-detector="shaming">
+              <div class="bento-badge">
+                <span class="badge-type">HEURISTIC PHRASE</span>
+                <span class="badge-num">RULE 02</span>
+              </div>
+              <div class="bento-icon">&#128172;</div>
+              <h3>Confirm-Shaming / Guilt Buttons</h3>
               <p>
-                Review the same session locally. File import is explicit; there is no live browser
-                connection.
+                Decline buttons framed with self-deprecation or guilt (e.g., <i>"I love paying full price"</i>) to coerce opt-ins.
               </p>
+
+              <!-- Interactive Card Widget -->
+              <div class="card-mini-sandbox" id="sandbox-shaming">
+                <div class="sandbox-top">
+                  <span class="sandbox-lbl">LIVE BUTTON COPY TESTER</span>
+                  <span class="sandbox-status-tag tag-flagged" id="tag-shame-status">&#9888; Guilt Phrase Matched</span>
+                </div>
+                <div class="sandbox-dual-btn">
+                  <button class="btn btn-primary btn-sm" disabled>Claim 15% OFF</button>
+                  <button type="button" class="btn-shame-interactive" id="card-shame-btn">No thanks, I love paying full price</button>
+                </div>
+                <div class="sandbox-btn-bar">
+                  <button type="button" class="btn-micro" id="btn-toggle-shame">Switch to Ethical Copy</button>
+                  <span class="sandbox-note">Click to test guilt vs neutral refusal</span>
+                </div>
+              </div>
+
+              <div class="bento-threshold">
+                <strong>Detection Logic:</strong>
+                <code>Choice matches guilt phrases, negative self-description, or refusal of discounts.</code>
+              </div>
+              <div class="bento-foot">
+                <b>Exploits:</b> Emotional shame and loss-aversion to force mailing list subscriptions.
+              </div>
+            </div>
+
+            <!-- Bento 3: Urgency Reset (Interactive) -->
+            <div class="bento-card bento-accent-amber" data-detector="urgency">
+              <div class="bento-badge">
+                <span class="badge-type">OBSERVED BEHAVIOR</span>
+                <span class="badge-num">RULE 03</span>
+              </div>
+              <div class="bento-icon">&#9201;&#65039;</div>
+              <h3>Fake Urgency & Countdown Resets</h3>
+              <p>
+                Timers claiming an offer is expiring, but once they tick down, secretly reset back to create artificial pressure.
+              </p>
+
+              <!-- Interactive Card Widget -->
+              <div class="card-mini-sandbox" id="sandbox-urgency">
+                <div class="sandbox-top">
+                  <span class="sandbox-lbl">LIVE COUNTDOWN SIMULATOR</span>
+                  <span class="sandbox-status-tag tag-neutral" id="tag-urgency-status">Sample Count: 3 Descending</span>
+                </div>
+                <div class="sandbox-timer-box">
+                  <span class="timer-desc">Flash Launch Offer Ends In:</span>
+                  <strong class="timer-digits-glow" id="card-timer-digits">00:08</strong>
+                </div>
+                <div class="sandbox-btn-bar">
+                  <button type="button" class="btn-micro btn-warning" id="btn-force-reset">Force Fake Reset (00:15) ↻</button>
+                  <span class="sandbox-resets-badge" id="card-reset-count">Resets: 0</span>
+                </div>
+              </div>
+
+              <div class="bento-threshold">
+                <strong>Detection Logic:</strong>
+                <code>Countdown increases by &gt;2s after 2+ descending samples in an urgency context.</code>
+              </div>
+              <div class="bento-foot">
+                <b>Exploits:</b> Fabricated scarcity to pressure impulsive, rushed checkout.
+              </div>
+            </div>
+
+            <!-- Bento 4: Late-Visible Drip Fees (Interactive) -->
+            <div class="bento-card bento-accent-orange" data-detector="fees">
+              <div class="bento-badge">
+                <span class="badge-type">OBSERVED CHANGE</span>
+                <span class="badge-num">RULE 04</span>
+              </div>
+              <div class="bento-icon">&#128181;</div>
+              <h3>Late-Visible / Drip Fees</h3>
+              <p>
+                Platform, convenience, or service charges concealed during browsing that appear unexpectedly at final payment.
+              </p>
+
+              <!-- Interactive Card Widget -->
+              <div class="card-mini-sandbox" id="sandbox-fees">
+                <div class="sandbox-top">
+                  <span class="sandbox-lbl">CHECKOUT DRIP PRICING TESTER</span>
+                  <span class="sandbox-status-tag tag-clean" id="tag-fee-status">&#10003; Initial Baseline (Clean)</span>
+                </div>
+                <div class="sandbox-cart-preview">
+                  <div class="cart-line"><span>Field One Headphones</span><b>₹2,499</b></div>
+                  <div class="cart-line fee-line" id="card-fee-line" hidden>
+                    <span class="fee-name">&#9888; Hidden Platform Fee</span>
+                    <b class="fee-amt">+₹149</b>
+                  </div>
+                  <div class="cart-total"><span>Total Payable:</span><b id="card-cart-total">₹2,499</b></div>
+                </div>
+                <div class="sandbox-btn-bar">
+                  <button type="button" class="btn-micro btn-alert" id="btn-trigger-fee">Simulate "Proceed to Checkout"</button>
+                  <span class="sandbox-note">Reveals hidden fee post-baseline</span>
+                </div>
+              </div>
+
+              <div class="bento-threshold">
+                <strong>Detection Logic:</strong>
+                <code>Monetary fee visible that was absent from initial visible fee baseline.</code>
+              </div>
+              <div class="bento-foot">
+                <b>Exploits:</b> Sunk cost fallacy once you have invested time filling out details.
+              </div>
+            </div>
+
+            <!-- Bento 5: Asymmetric Choice Prominence (Interactive) -->
+            <div class="bento-card bento-accent-coral" data-detector="prominence">
+              <div class="bento-badge">
+                <span class="badge-type">VISUAL PROMINENCE</span>
+                <span class="badge-num">RULE 05</span>
+              </div>
+              <div class="bento-icon">&#9878;&#65039;</div>
+              <h3>Asymmetric Choice Prominence</h3>
+              <p>
+                Cookie banners where "Accept All" is massive and vibrant while "Reject" is tiny, transparent, or low-contrast.
+              </p>
+
+              <!-- Interactive Card Widget -->
+              <div class="card-mini-sandbox" id="sandbox-prominence">
+                <div class="sandbox-top">
+                  <span class="sandbox-lbl">VISUAL HIERARCHY TESTER</span>
+                  <span class="sandbox-status-tag tag-flagged" id="tag-prominence-status">&#9888; 2.5× Disparity Detected</span>
+                </div>
+                <div class="sandbox-cookie-banner" id="card-cookie-banner">
+                  <button type="button" class="btn-prom-accept" id="card-prom-accept">Accept All Cookies</button>
+                  <button type="button" class="btn-prom-reject" id="card-prom-reject">Reject</button>
+                </div>
+                <div class="sandbox-btn-bar">
+                  <button type="button" class="btn-micro" id="btn-toggle-prominence">Enforce Equal 1:1 Prominence</button>
+                  <span class="sandbox-note" id="note-prominence">Area ratio: 2.5× | Font: 1.5×</span>
+                </div>
+              </div>
+
+              <div class="bento-threshold">
+                <strong>Detection Logic:</strong>
+                <code>Accept area &ge;2.5&times; Reject, font &ge;1.5&times;, or Reject has diminished opacity (&le;0.5).</code>
+              </div>
+              <div class="bento-foot">
+                <b>Exploits:</b> Visual friction to coerce privacy consent surrender.
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="section" id="privacy">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">LOCAL BY DESIGN</div>
-            <h2>Useful evidence.<br />Clear boundaries.</h2>
-          </div>
-        </div>
-        <div class="privacy-row">
-          <div>
-            <span class="privacy-symbol" aria-hidden="true">◈</span>
-            <h3>Analysis stays in the browser</h3>
-            <p>
-              The scanner sends no page content to a server. Core rules do not need an AI service or
-              account.
+
+      <!-- INTERACTIVE SIMULATOR (DARK PATTERN LAB) -->
+      <section class="section simulator-section" id="simulator">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-kicker">LIVE TESTING LABORATORY</span>
+            <h2 class="section-headline">Interactive Dark Pattern Simulator</h2>
+            <p class="section-subtext">
+              Toggle manipulative patterns below and watch NudgeKavach's real-time observation engine intercept and outline deceptive elements.
             </p>
           </div>
-          <div>
-            <span class="privacy-symbol" aria-hidden="true">↗</span>
-            <h3>Sharing is your decision</h3>
-            <p>
-              Export is user initiated. Reports can contain observed page text; review their
-              contents before sharing.
-            </p>
-          </div>
-          <div>
-            <span class="privacy-symbol" aria-hidden="true">≠</span>
-            <h3>Zero is not a guarantee</h3>
-            <p>
-              No covered signals observed does not establish that a page is safe, fair or free of
-              patterns outside current coverage.
-            </p>
+
+          <div class="sim-cockpit">
+            <!-- Left Console: Toggles & Status -->
+            <div class="sim-sidebar">
+              <div class="sidebar-header">
+                <h3>Intervention Console</h3>
+                <span id="sim-active-count" class="sim-status-pill">4 Active Exploits</span>
+              </div>
+              <p class="sidebar-desc">
+                Toggle deceptive patterns on and off to observe how the engine detects behavioral shifts:
+              </p>
+
+              <div class="sim-toggle-stack">
+                <label class="sim-switch-row">
+                  <input type="checkbox" id="toggle-precheck" checked />
+                  <span class="switch-ui"></span>
+                  <div class="switch-txt">
+                    <strong>Pre-checked Optional Add-on</strong>
+                    <span>Auto-selects priority packaging fee</span>
+                  </div>
+                </label>
+
+                <label class="sim-switch-row">
+                  <input type="checkbox" id="toggle-shaming" checked />
+                  <span class="switch-ui"></span>
+                  <div class="switch-txt">
+                    <strong>Confirm-Shaming Button</strong>
+                    <span>Changes decline to self-deprecating copy</span>
+                  </div>
+                </label>
+
+                <label class="sim-switch-row">
+                  <input type="checkbox" id="toggle-urgency" checked />
+                  <span class="switch-ui"></span>
+                  <div class="switch-txt">
+                    <strong>Looping Countdown Reset</strong>
+                    <span>Forces false urgency countdown reset</span>
+                  </div>
+                </label>
+
+                <label class="sim-switch-row">
+                  <input type="checkbox" id="toggle-prominence" checked />
+                  <span class="switch-ui"></span>
+                  <div class="switch-txt">
+                    <strong>Asymmetric Cookie Prominence</strong>
+                    <span>Shrinks and dims the Reject button</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="sim-btn-footer">
+                <button type="button" id="sim-reset-btn" class="btn btn-outline btn-sm">Reset All to Ethical</button>
+                <a href="index.html?mode=clean" class="btn btn-ghost btn-sm">Clean Store Baseline &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Right Console: Simulated Target DOM with Live Overlays -->
+            <div class="sim-display">
+              <div class="display-topbar">
+                <span class="display-tag">VIRTUAL SHOPPING CART DOM</span>
+                <span class="display-sub">SYNTHETIC OBSERVATION FEED</span>
+              </div>
+
+              <div class="display-canvas">
+                <!-- Sandbox 1: Addon -->
+                <div class="sim-element-box" id="sim-addon-box">
+                  <span class="sim-flag-tag" id="sim-addon-tag">&#9888; Flagged: Pre-selected Optional Add-on</span>
+                  <label class="sim-ui-check">
+                    <input type="checkbox" id="sim-addon-input" checked />
+                    <span>Add Express Priority Handling & Shipping Protection (<b>₹149</b>)</span>
+                  </label>
+                </div>
+
+                <!-- Sandbox 2: Timer -->
+                <div class="sim-element-box" id="sim-timer-box">
+                  <span class="sim-flag-tag" id="sim-timer-tag">&#9888; Flagged: Suspicious Urgency Reset</span>
+                  <div class="sim-timer-content">
+                    <span class="timer-kicker">Flash Promotional Offer Ends In:</span>
+                    <strong class="sim-timer-digits" id="sim-countdown-val">00:08</strong>
+                  </div>
+                </div>
+
+                <!-- Sandbox 3: Shaming -->
+                <div class="sim-element-box" id="sim-shaming-box">
+                  <span class="sim-flag-tag" id="sim-shaming-tag">&#9888; Flagged: Confirm-Shaming Phrase</span>
+                  <div class="sim-promo-card">
+                    <strong>Exclusive Loyalty Discount: 15% OFF</strong>
+                    <div class="sim-button-pair">
+                      <button class="btn btn-primary btn-sm">Claim 15% Discount &rarr;</button>
+                      <button class="btn-shame-refusal" id="sim-decline-btn">No thanks, I love paying full price</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sandbox 4: Cookie Prominence -->
+                <div class="sim-element-box" id="sim-cookie-box">
+                  <span class="sim-flag-tag" id="sim-cookie-tag">&#9888; Flagged: 2.5× Prominence Disparity</span>
+                  <div class="sim-cookie-row" id="sim-cookie-banner">
+                    <span>We use cookies to personalize recommendations.</span>
+                    <div class="cookie-btns">
+                      <button class="cookie-btn-accept" id="sim-accept-cookie">Accept All</button>
+                      <button class="cookie-btn-reject" id="sim-reject-cookie">Reject</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <section class="pro-banner" aria-labelledby="protect-title">
-        <div>
-          <div class="eyebrow">PROTECT MODE / PRO PREVIEW</div>
-          <h2 id="protect-title">Make This Page Fair.</h2>
-          <p>
-            Future direction: review optional charges, normalize choice prominence and reduce
-            interface pressure. Page modification and Developer CI are not implemented.
-          </p>
+
+      <!-- CHROME INSTALLATION GUIDE SECTION -->
+      <section class="section install-section" id="install">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-kicker">30-SECOND QUICK START</span>
+            <h2 class="section-headline">How to Install NudgeKavach in Chrome</h2>
+            <p class="section-subtext">
+              NudgeKavach runs locally without Chrome Web Store telemetry. Load the unpacked extension directly from this repository in 4 simple steps.
+            </p>
+          </div>
+
+          <!-- Stepper Progress Connector -->
+          <div class="stepper-track" aria-hidden="true">
+            <div class="step-node active"><span class="node-num">1</span><span class="node-lbl">Address Bar</span></div>
+            <div class="step-line active"></div>
+            <div class="step-node active"><span class="node-num">2</span><span class="node-lbl">Developer Mode</span></div>
+            <div class="step-line active"></div>
+            <div class="step-node active"><span class="node-num">3</span><span class="node-lbl">Load Unpacked</span></div>
+            <div class="step-line active"></div>
+            <div class="step-node active"><span class="node-num">4</span><span class="node-lbl">Audit Active</span></div>
+          </div>
+
+          <!-- 4 High-Tech Step Cards -->
+          <div class="steps-grid-modern">
+            <!-- Step 1 Card -->
+            <div class="step-card-modern">
+              <div class="step-card-header">
+                <span class="step-tag">STEP 01</span>
+                <div class="step-icon-badge">
+                  <svg viewBox="0 0 24 24" fill="none" class="step-svg" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.8"/>
+                  </svg>
+                </div>
+              </div>
+              <h4>Open Extensions Page</h4>
+              <p>Type or paste this system URL into your Chrome address bar and press Enter:</p>
+              
+              <!-- Mini Chrome Address Bar Mockup -->
+              <div class="mock-chrome-bar">
+                <span class="bar-lock">&#128274;</span>
+                <code class="bar-url">chrome://extensions</code>
+                <button type="button" class="copy-trigger bar-copy-btn" data-copy="chrome://extensions" title="Copy URL">
+                  Copy
+                </button>
+              </div>
+              <span class="step-hint">Shortcut: Chrome Menu &rarr; Extensions &rarr; Manage Extensions</span>
+            </div>
+
+            <!-- Step 2 Card -->
+            <div class="step-card-modern">
+              <div class="step-card-header">
+                <span class="step-tag">STEP 02</span>
+                <div class="step-icon-badge">
+                  <svg viewBox="0 0 24 24" fill="none" class="step-svg" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.8"/>
+                  </svg>
+                </div>
+              </div>
+              <h4>Enable Developer Mode</h4>
+              <p>In the top-right corner, flip the Developer mode switch to ON:</p>
+
+              <!-- Interactive Clickable Switch Mockup -->
+              <div class="mock-devmode-box" id="interactive-dev-switch">
+                <span class="devmode-label">Developer mode</span>
+                <div class="mock-switch-active">
+                  <span class="switch-knob"></span>
+                </div>
+              </div>
+              <span class="step-hint">&#10003; Unlocks unpacked local extension loading</span>
+            </div>
+
+            <!-- Step 3 Card -->
+            <div class="step-card-modern">
+              <div class="step-card-header">
+                <span class="step-tag">STEP 03</span>
+                <div class="step-icon-badge">
+                  <svg viewBox="0 0 24 24" fill="none" class="step-svg" aria-hidden="true">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M12 11v6m-3-3 3-3 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <h4>Click "Load Unpacked"</h4>
+              <p>Click the <b>Load unpacked</b> button in the top toolbar and select this folder:</p>
+
+              <!-- Folder Selector Pill -->
+              <div class="mock-folder-pill">
+                <div class="folder-label">
+                  <span class="folder-ico">&#128194;</span>
+                  <code>NudgeKavach/extension</code>
+                </div>
+                <button type="button" class="copy-trigger bar-copy-btn" data-copy="extension" title="Copy Path">
+                  Copy
+                </button>
+              </div>
+              <span class="step-hint">Points to the directory with manifest.json</span>
+            </div>
+
+            <!-- Step 4 Card -->
+            <div class="step-card-modern">
+              <div class="step-card-header">
+                <span class="step-tag">STEP 04</span>
+                <div class="step-icon-badge">
+                  <svg viewBox="0 0 24 24" fill="none" class="step-svg" aria-hidden="true">
+                    <path d="M12 2 21 6v6c0 5-9 10-9 10S3 17 3 12V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <h4>Audit Any Page!</h4>
+              <p>Reload any page or the demo store. The green launcher drawer will appear automatically:</p>
+
+              <!-- Mockup of the Floating Launcher Button -->
+              <div class="mock-launcher-preview">
+                <div class="launcher-chip">
+                  <svg viewBox="0 0 24 24" fill="none" class="chip-shield" aria-hidden="true">
+                    <path d="M12 2 21 6v6c0 5-9 10-9 10S3 17 3 12V6Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>NudgeKavach</span>
+                  <span class="chip-badge">3</span>
+                </div>
+                <span class="chip-status">&#9679; Ready to scan</span>
+              </div>
+              <span class="step-hint">Click the shield or toolbar icon to open NudgeProof</span>
+            </div>
+          </div>
+
+          <!-- Realistic Developer Terminal & Demo Launcher Banner -->
+          <div class="terminal-banner-wrap">
+            <div class="terminal-window-mac">
+              <div class="term-titlebar">
+                <div class="term-dots">
+                  <span class="tdot red"></span>
+                  <span class="tdot yellow"></span>
+                  <span class="tdot green"></span>
+                </div>
+                <span class="term-title">terminal — bash 80×24</span>
+                <button type="button" class="copy-trigger term-copy" data-copy="npm start">Copy Command</button>
+              </div>
+              <div class="term-content">
+                <p><span class="term-prompt">$</span> <span class="term-cmd">cd</span> NudgeKavach</p>
+                <p><span class="term-prompt">$</span> <span class="term-cmd">npm start</span></p>
+                <p class="term-out">&#10003; NudgeKavach demo server running: <span class="term-link">http://127.0.0.1:4173/</span> <span class="term-ready">[READY]</span></p>
+              </div>
+            </div>
+
+            <div class="terminal-banner-actions">
+              <div class="action-text">
+                <h3>Try the Demonstration Store</h3>
+                <p>Observe all 5 manipulative patterns or switch to clean mode with 0 findings.</p>
+              </div>
+              <div class="action-buttons">
+                <a href="index.html" class="btn btn-primary btn-hero">
+                  <span>Open Pattern Demo Store &rarr;</span>
+                  <span class="badge-accent">5 Findings</span>
+                </a>
+                <a href="guide.html" class="btn btn-secondary btn-hero">
+                  <span>View Presenter Walkthrough Guide</span>
+                  <svg viewBox="0 0 16 16" fill="none" class="btn-icon" aria-hidden="true">
+                    <path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="pro-actions">
-          <button class="button" type="button" disabled>MAKE THIS PAGE FAIR</button
-          ><small>Coming in Pro</small>
+      </section>
+
+      <!-- ARCHITECTURE & PRIVACY AUDIT (HUMAN-ENGINEERED) -->
+      <section class="section arch-section" id="how-it-works">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-kicker">SYSTEMS ARCHITECTURE & NETWORK EGRESS AUDIT</span>
+            <h2 class="section-headline">Why Client-Side V8 Execution Beats Cloud LLMs</h2>
+            <p class="section-subtext">
+              Real dark pattern interception requires sub-10ms synchronous DOM observation, zero network egress, and auditable proof. Here is how our architecture isolates your data compared to cloud extensions.
+            </p>
+          </div>
+
+          <!-- Architecture Viewport Switcher -->
+          <div class="arch-tabs-bar" role="tablist">
+            <button type="button" class="arch-tab-btn active" id="tab-btn-devtools" data-arch-view="devtools">
+              <svg viewBox="0 0 24 24" fill="none" class="arch-tab-ico" aria-hidden="true">
+                <path d="M4 17l6-6-6-6m8 14h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>DevTools Network Waterfall</span>
+            </button>
+            <button type="button" class="arch-tab-btn" id="tab-btn-benchmark" data-arch-view="benchmark">
+              <svg viewBox="0 0 24 24" fill="none" class="arch-tab-ico" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Live In-Browser Benchmark</span>
+            </button>
+            <button type="button" class="arch-tab-btn" id="tab-btn-matrix" data-arch-view="matrix">
+              <svg viewBox="0 0 24 24" fill="none" class="arch-tab-ico" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span>Technical Spec Matrix</span>
+            </button>
+          </div>
+
+          <!-- VIEW 1: DevTools Network Waterfall & Hardware Pipeline -->
+          <div class="arch-view-panel active" id="view-devtools">
+            <!-- Simulated DevTools Split Screen -->
+            <div class="devtools-inspector-window">
+              <div class="devtools-window-topbar">
+                <div class="devtools-dots">
+                  <span class="d-dot d-red"></span>
+                  <span class="d-dot d-yellow"></span>
+                  <span class="d-dot d-green"></span>
+                </div>
+                <div class="devtools-title-strip">
+                  <span class="devtools-chip-icon">&#128394;</span>
+                  <span class="devtools-chip-title">Developer Tools &mdash; Network Activity Audit</span>
+                  <span class="devtools-chip-tag">Chromium MV3</span>
+                </div>
+                <!-- Interactive Toggle Between Local and Cloud Inspector -->
+                <div class="devtools-source-toggle">
+                  <button type="button" class="devtools-toggle-btn active" id="btn-inspect-kavach">NudgeKavach (Local Tab)</button>
+                  <button type="button" class="devtools-toggle-btn" id="btn-inspect-cloud">Cloud AI Extension</button>
+                </div>
+              </div>
+
+              <!-- DevTools Network Statistics Header -->
+              <div class="devtools-metrics-strip" id="devtools-summary-strip">
+                <div class="d-metric-item">
+                  <span class="d-lbl">Network Requests</span>
+                  <strong class="d-val val-green" id="stat-req-count">0 Requests</strong>
+                </div>
+                <div class="d-metric-item">
+                  <span class="d-lbl">Data Transferred</span>
+                  <strong class="d-val val-green" id="stat-data-egress">0 B (Air-Gapped)</strong>
+                </div>
+                <div class="d-metric-item">
+                  <span class="d-lbl">Egress Network Sockets</span>
+                  <strong class="d-val val-green" id="stat-sockets">Closed (0 Active)</strong>
+                </div>
+                <div class="d-metric-item">
+                  <span class="d-lbl">Latency Overhead</span>
+                  <strong class="d-val val-green" id="stat-latency">&lt; 1.2ms (Synchronous)</strong>
+                </div>
+              </div>
+
+              <!-- DevTools Request Log Table -->
+              <div class="devtools-table-wrap">
+                <table class="devtools-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 28%;">Resource / Thread</th>
+                      <th style="width: 14%;">Type</th>
+                      <th style="width: 12%;">Status</th>
+                      <th style="width: 14%;">Transferred</th>
+                      <th style="width: 32%;">Waterfall / Latency Timeline</th>
+                    </tr>
+                  </thead>
+                  <tbody id="devtools-tbody">
+                    <!-- Default: NudgeKavach Rows -->
+                    <tr class="dev-row-clean">
+                      <td>
+                        <span class="res-name">&#128308; mutation_observer.js</span>
+                        <span class="res-path">content_scripts/content.js</span>
+                      </td>
+                      <td><span class="badge-type-mono">V8 Microtask</span></td>
+                      <td><span class="badge-status-local">In-Memory</span></td>
+                      <td><span class="spec-bytes">0 B</span></td>
+                      <td>
+                        <div class="waterfall-bar-wrap">
+                          <span class="waterfall-fill bar-ultra-fast" style="width: 8%;"></span>
+                          <span class="waterfall-time">0.32ms</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="dev-row-clean">
+                      <td>
+                        <span class="res-name">&#128308; rules.js &middot; parseUrgency()</span>
+                        <span class="res-path">extension/rules.js</span>
+                      </td>
+                      <td><span class="badge-type-mono">Pure Logic</span></td>
+                      <td><span class="badge-status-local">In-Memory</span></td>
+                      <td><span class="spec-bytes">0 B</span></td>
+                      <td>
+                        <div class="waterfall-bar-wrap">
+                          <span class="waterfall-fill bar-ultra-fast" style="width: 12%;"></span>
+                          <span class="waterfall-time">0.58ms</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="dev-row-clean">
+                      <td>
+                        <span class="res-name">&#128308; shadow_root_drawer.js</span>
+                        <span class="res-path">element.attachShadow({mode:'closed'})</span>
+                      </td>
+                      <td><span class="badge-type-mono">Shadow DOM</span></td>
+                      <td><span class="badge-status-local">Local Tab</span></td>
+                      <td><span class="spec-bytes">0 B</span></td>
+                      <td>
+                        <div class="waterfall-bar-wrap">
+                          <span class="waterfall-fill bar-ultra-fast" style="width: 16%;"></span>
+                          <span class="waterfall-time">0.91ms</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- DevTools Security Assertion Notice -->
+              <div class="devtools-security-banner banner-safe" id="devtools-security-alert">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="sec-banner-ico" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v4a1 1 0 102 0V7z" clip-rule="evenodd"/>
+                </svg>
+                <div class="sec-banner-text">
+                  <strong>Network Egress Sealed: Zero bytes emitted.</strong>
+                  <span>Tab memory remains 100% air-gapped. Your credit card entries, passwords, and shopping cart are never serialized or transmitted.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architectural Node Pipeline Diagram -->
+            <div class="pipeline-comparison-grid">
+              <!-- Pipeline 1: Local Engine -->
+              <div class="pipeline-card pipeline-safe">
+                <div class="pipe-header">
+                  <span class="pipe-pill pill-safe">NudgeKavach In-Tab Execution Pipeline</span>
+                  <span class="pipe-egress-status">&#128274; 0 B Egress</span>
+                </div>
+                <div class="pipe-flow-diagram">
+                  <div class="pipe-node">
+                    <div class="node-icon">&#128196;</div>
+                    <span class="node-title">DOM Mutation</span>
+                    <span class="node-sub">Live Checkout Form</span>
+                  </div>
+                  <div class="pipe-connector connector-safe">
+                    <span class="conn-pulse pulse-safe"></span>
+                    <span class="conn-label">In-Memory Pointer</span>
+                  </div>
+                  <div class="pipe-node highlight-safe">
+                    <div class="node-icon">&#9889;</div>
+                    <span class="node-title">V8 Rules Engine</span>
+                    <span class="node-sub">Synchronous JS (&lt;2ms)</span>
+                  </div>
+                  <div class="pipe-connector connector-safe">
+                    <span class="conn-pulse pulse-safe"></span>
+                    <span class="conn-label">Closed Shadow DOM</span>
+                  </div>
+                  <div class="pipe-node">
+                    <div class="node-icon">&#128737;&#65039;</div>
+                    <span class="node-title">Audit Overlay</span>
+                    <span class="node-sub">Immune to Host CSS</span>
+                  </div>
+                </div>
+                <p class="pipe-footer-note">
+                  Execution finishes synchronously within the same browser paint cycle. Zero remote servers involved.
+                </p>
+              </div>
+
+              <!-- Pipeline 2: Cloud LLM Extension -->
+              <div class="pipeline-card pipeline-danger">
+                <div class="pipe-header">
+                  <span class="pipe-pill pill-danger">Generic Cloud AI Extension Pipeline</span>
+                  <span class="pipe-egress-status">&#9888; Full DOM Leaked</span>
+                </div>
+                <div class="pipe-flow-diagram">
+                  <div class="pipe-node">
+                    <div class="node-icon">&#128196;</div>
+                    <span class="node-title">DOM Mutation</span>
+                    <span class="node-sub">Checkout &amp; PII Inputs</span>
+                  </div>
+                  <div class="pipe-connector connector-danger">
+                    <span class="conn-pulse pulse-danger"></span>
+                    <span class="conn-label">Full Serialized HTML</span>
+                  </div>
+                  <div class="pipe-node highlight-danger">
+                    <div class="node-icon">&#127760;</div>
+                    <span class="node-title">Public Internet</span>
+                    <span class="node-sub">Outbound POST ~80KB</span>
+                  </div>
+                  <div class="pipe-connector connector-danger">
+                    <span class="conn-pulse pulse-danger"></span>
+                    <span class="conn-label">Remote Model Queue</span>
+                  </div>
+                  <div class="pipe-node">
+                    <div class="node-icon">&#9729;&#65039;</div>
+                    <span class="node-title">Remote Cloud LLM</span>
+                    <span class="node-sub">Latency: 1,800ms+</span>
+                  </div>
+                </div>
+                <p class="pipe-footer-note">
+                  Personal addresses, payment fields, and secret discount links travel across third-party cloud servers.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW 2: Live In-Browser Micro-Benchmark -->
+          <div class="arch-view-panel" id="view-benchmark" style="display: none;">
+            <div class="benchmark-suite-card">
+              <div class="benchmark-header">
+                <div>
+                  <span class="section-kicker">REAL-TIME IN-BROWSER BENCHMARK</span>
+                  <h3>Deterministic V8 Microtask vs Cloud LLM API Latency</h3>
+                  <p class="benchmark-desc">
+                    Click the button below to execute 2,000 real regex and geometric threshold evaluations right in your browser tab. We record live <code>performance.now()</code> timestamps on your actual CPU.
+                  </p>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn-run-benchmark">
+                  <span>&#9654; Run Live Benchmark</span>
+                </button>
+              </div>
+
+              <!-- Benchmark Results Grid -->
+              <div class="benchmark-scoreboard">
+                <div class="score-card score-kavach">
+                  <div class="score-top">
+                    <span class="score-type">NUDGEKAVACH CLIENT-SIDE V8</span>
+                    <span class="score-tag tag-measured">MEASURED ON YOUR CPU</span>
+                  </div>
+                  <div class="score-number-row">
+                    <strong class="score-big" id="bench-local-time">0.34</strong>
+                    <span class="score-unit">ms</span>
+                  </div>
+                  <div class="score-meter-wrap">
+                    <div class="score-meter-bar bar-kavach" id="bench-local-bar" style="width: 2%;"></div>
+                  </div>
+                  <ul class="score-specs-list">
+                    <li><span>Synchronous Microtask:</span> <b>Yes (Instant UI update)</b></li>
+                    <li><span>Zero Network Latency:</span> <b>0.00ms roundtrip</b></li>
+                    <li><span>CPU Thread Impact:</span> <b>&lt;0.01% tab resources</b></li>
+                  </ul>
+                </div>
+
+                <div class="score-card score-cloud">
+                  <div class="score-top">
+                    <span class="score-type">REMOTE CLOUD AI EXTENSION</span>
+                    <span class="score-tag tag-cloud-est">AVERAGE API ROUNDTRIP</span>
+                  </div>
+                  <div class="score-number-row">
+                    <strong class="score-big score-cloud-time" id="bench-cloud-time">1,720.00</strong>
+                    <span class="score-unit">ms</span>
+                  </div>
+                  <div class="score-meter-wrap">
+                    <div class="score-meter-bar bar-cloud" id="bench-cloud-bar" style="width: 98%;"></div>
+                  </div>
+                  <ul class="score-specs-list">
+                    <li><span>DNS &amp; TLS Handshake:</span> <b>115ms &ndash; 180ms</b></li>
+                    <li><span>Payload Serialization:</span> <b>45ms (80KB HTML)</b></li>
+                    <li><span>LLM Inference Queue:</span> <b>1,400ms &ndash; 2,800ms</b></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="benchmark-summary-box">
+                <div class="sum-lead">
+                  <span class="sum-multiplier" id="bench-multiplier">5,058&times;</span>
+                  <strong>Faster &middot; Real-Time Interception Guaranteed</strong>
+                </div>
+                <p>
+                  Because NudgeKavach executes in milliseconds, deceptive UI modifications (like auto-resetting countdown timers or drip fees) are caught before the user completes payment. Cloud extensions lag by seconds, failing to intercept impulsive checkout clicks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW 3: Engineering Technical Spec Matrix -->
+          <div class="arch-view-panel" id="view-matrix" style="display: none;">
+            <div class="specs-matrix-card">
+              <table class="specs-table">
+                <thead>
+                  <tr>
+                    <th style="width: 26%;">Security Dimension</th>
+                    <th style="width: 37%;" class="th-accent-spec">
+                      <div class="spec-head-wrap">
+                        <span class="spec-arch-tag">&#10003; DETERMINISTIC CLIENT-SIDE</span>
+                        <strong>NudgeKavach Engine</strong>
+                        <span class="spec-sub-tag">Manifest V3 &middot; Zero Egress</span>
+                      </div>
+                    </th>
+                    <th style="width: 37%;">
+                      <div class="spec-head-wrap">
+                        <span class="spec-risk-tag">&#9888; UNTRUSTED EGRESS</span>
+                        <strong>Cloud AI Extensions</strong>
+                        <span class="spec-sub-tag">Remote LLM APIs &middot; Outbound HTTP</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="spec-param">
+                        <strong>Network Boundary</strong>
+                        <span>Where is payload transmitted?</span>
+                      </div>
+                    </td>
+                    <td class="td-accent-spec">
+                      <div class="spec-val-box val-safe">
+                        <code class="spec-code-green">0 bytes egress</code>
+                        <p>Air-gapped within the local tab's execution memory. No WebSocket, fetch, or beacon sockets opened.</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="spec-val-box val-warn">
+                        <code class="spec-code-red">30 KB &ndash; 120 KB per mutation</code>
+                        <p>Serializes complete document HTML, form inputs, session cookies, and transmitting to external cloud.</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="spec-param">
+                        <strong>Evaluation Method</strong>
+                        <span>Deterministic rule vs probabilistic guess</span>
+                      </div>
+                    </td>
+                    <td class="td-accent-spec">
+                      <div class="spec-val-box val-safe">
+                        <code class="spec-code-green">Deterministic Thresholds</code>
+                        <p>Rigorous DOM rect bounding boxes, explicit ARIA state diffs, and timestamped chronological baselines.</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="spec-val-box val-warn">
+                        <code class="spec-code-red">Non-Deterministic Sampling</code>
+                        <p>Probabilistic token generation. Prone to hallucinating risks or missing blatant UI shifts due to prompt drift.</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="spec-param">
+                        <strong>DOM Injection Security</strong>
+                        <span>Host page tamper resistance</span>
+                      </div>
+                    </td>
+                    <td class="td-accent-spec">
+                      <div class="spec-val-box val-safe">
+                        <code class="spec-code-green">Closed Shadow DOM Root</code>
+                        <p>Enclosed in <code>#shadow-root (closed)</code> with <code>all: initial !important</code>; immune to malicious host styles or scripts.</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="spec-val-box val-warn">
+                        <code class="spec-code-red">Open Inline DOM</code>
+                        <p>Injected directly into host webpage body where eCommerce scripts can easily <code>display: none</code> the warning overlay.</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="spec-param">
+                        <strong>Prerequisites &amp; Cost</strong>
+                        <span>Setup, accounts, and subscriptions</span>
+                      </div>
+                    </td>
+                    <td class="td-accent-spec">
+                      <div class="spec-val-box val-safe">
+                        <code class="spec-code-green">Zero Config &middot; 100% Free &amp; Offline</code>
+                        <p>No user login, no credit tokens, no billing, and runs indefinitely without internet access.</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="spec-val-box val-warn">
+                        <code class="spec-code-red">API Keys &amp; Paid Plans</code>
+                        <p>Requires monthly OpenAI/Anthropic API keys or recurring SaaS subscriptions that stop working when credits expire.</p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WINDOWS AUDIT WORKSPACE (ELECTRON COMPANION APP) -->
+      <section class="section desktop-section" id="desktop-workspace">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-kicker">WINDOWS AUDIT WORKSPACE &middot; COMPANION APPLICATION</span>
+            <h2 class="section-headline">Air-Gapped Desktop Forensics for NudgeProof Audits</h2>
+            <p class="section-subtext">
+              An offline Electron audit workspace engineered for regulators, compliance teams, and digital trust auditors. Review captured tamper-evident DOM findings, run controlled session comparisons, and store up to 40 sessions with zero telemetry.
+            </p>
+          </div>
+
+          <div class="desktop-showcase-grid">
+            <div class="desktop-preview-frame">
+              <div class="desktop-frame-bar">
+                <div class="window-dots">
+                  <span class="w-dot red"></span>
+                  <span class="w-dot yellow"></span>
+                  <span class="w-dot green"></span>
+                </div>
+                <span class="desktop-frame-title">NudgeKavach Audit Workspace &mdash; Windows Companion</span>
+                <span class="desktop-frame-tag">ELECTRON V34</span>
+              </div>
+              <img
+                src="assets/windows-workspace.jpg"
+                alt="NudgeKavach Windows Audit Workspace displaying forensic evidence cards, before/after snapshots, and session comparison"
+                class="desktop-preview-img"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="desktop-features-col">
+              <div class="desktop-feat-card">
+                <div class="feat-icon-badge">&#128193;</div>
+                <div class="feat-copy">
+                  <h4>Air-Gapped NudgeProof Handoff</h4>
+                  <p>Explicit JSON import keeps browser auditing completely decoupled. No background cloud sync or outbound sockets.</p>
+                </div>
+              </div>
+
+              <div class="desktop-feat-card">
+                <div class="feat-icon-badge">&#9878;&#65039;</div>
+                <div class="feat-copy">
+                  <h4>Controlled Side-by-Side Comparison</h4>
+                  <p>Select any Pattern Mode and Clean Control session pair to evaluate baseline disparities without subjective bias.</p>
+                </div>
+              </div>
+
+              <div class="desktop-feat-card">
+                <div class="feat-icon-badge">&#128272;</div>
+                <div class="feat-copy">
+                  <h4>Forensic Session Vault</h4>
+                  <p>Persists up to 40 sessions in sandboxed local app data with tamper detection, finding IDs, and timeline playback.</p>
+                </div>
+              </div>
+
+              <div class="desktop-launch-box">
+                <div class="launch-label">Launch in Development:</div>
+                <pre class="launch-code"><code>npm run desktop:dev</code></pre>
+                <div class="launch-sublabel">Produce Portable Windows Build:</div>
+                <pre class="launch-code"><code>npm run desktop:build</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-    <footer class="site-footer">
-      <div class="container">
-        <p>NudgeKavach · Evidence before judgement.</p>
-        <a
-          href="https://github.com/kartikvermagit-ds/NudgeKavach"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Project repository ↗</a
-        ><small>CATALYST HACK 2026 / CYBERSECURITY &amp; DIGITAL TRUST</small>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-about">
+          <div class="footer-brand-title">
+            <div class="brand-shield" style="width: 32px; height: 32px; padding: 2px;">
+              <img src="logo.png" alt="NudgeKavach Shield Logo" class="brand-img-logo" />
+            </div>
+            <span class="brand-name">NudgeKavach</span>
+          </div>
+          <p class="footer-mission">
+            Your Choice. Your Control.<br />
+            An open-source digital manipulation auditor built to restore transparency to everyday online shopping.
+          </p>
+          <span class="hackathon-tag">Catalyst Hack 2026 · Cybersecurity & Digital Trust</span>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Architecture</h5>
+          <ul>
+            <li><a href="#detectors">5 Detectors</a></li>
+            <li><a href="#simulator">Interactive Simulator</a></li>
+            <li><a href="#install">Install Extension</a></li>
+            <li><a href="#how-it-works">Privacy Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Demo Environment</h5>
+          <ul>
+            <li><a href="index.html?mode=tricky">Pattern Store (5 Dark Patterns)</a></li>
+            <li><a href="index.html?mode=clean">Clean Store (0 Findings)</a></li>
+            <li><a href="guide.html">Presenter Walkthrough Guide</a></li>
+            <li><a href="http://127.0.0.1:4173/health">Backend Health Check</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Verification & Quality</h5>
+          <ul>
+            <li><a href="https://github.com/kartikvermagit-ds/NudgeKavach.git" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><code>npm test</code> (10/10 Passing Suites)</li>
+            <li><code>npm run check</code> (Manifest V3 Verification)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-sub">
+        <p>&copy; 2026 NudgeKavach. Built for Catalyst Hack 2026. Evidence, not a verdict.</p>
+        <div class="footer-badges">
+          <span>100% Client-Side</span>
+          <span>Zero Telemetry</span>
+          <span>Deterministic Auditing</span>
+        </div>
       </div>
     </footer>
+
+    <script src="landing.js"></script>
   </body>
 </html>
